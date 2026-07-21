@@ -1,0 +1,24 @@
+name = "docufill-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "docufill-db"
+database_id = "REPLACE_WITH_ID"
+
+# R2 Bucket (document uploads + exports)
+[[r2_buckets]]
+binding = "DOCUMENTS"
+bucket_name = "docufill-documents"
+
+[vars]
+ENVIRONMENT = "development"
+MAX_FILE_SIZE_MB = "10"
+GEMINI_MODEL = "gemini-2.0-flash"
+
+[env.production]
+[env.production.vars]
+ENVIRONMENT = "production"
