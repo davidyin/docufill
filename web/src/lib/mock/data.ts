@@ -1,0 +1,113 @@
+// DocuFill Web — Mock Data
+
+import type { Document, ExtractionResult, FormTemplate, UploadResponse } from '$lib/types';
+
+export const mockDocuments: Document[] = [
+  {
+    id: 'doc_abc123',
+    user_id: 'dev_user',
+    filename: 'receipt_shoppers.jpg',
+    r2_key: 'documents/dev_user/doc_abc123.jpg',
+    mime_type: 'image/jpeg',
+    file_size: 245000,
+    status: 'extracted',
+    document_type: 'receipt',
+    error_message: null,
+    created_at: new Date(Date.now() - 3600000).toISOString(),
+    updated_at: new Date(Date.now() - 3500000).toISOString(),
+  },
+  {
+    id: 'doc_def456',
+    user_id: 'dev_user',
+    filename: 't4_slip_2024.pdf',
+    r2_key: 'documents/dev_user/doc_def456.pdf',
+    mime_type: 'application/pdf',
+    file_size: 180000,
+    status: 'extracted',
+    document_type: 't4',
+    error_message: null,
+    created_at: new Date(Date.now() - 86400000).toISOString(),
+    updated_at: new Date(Date.now() - 86300000).toISOString(),
+  },
+  {
+    id: 'doc_ghi789',
+    user_id: 'dev_user',
+    filename: 'invoice_2024.png',
+    r2_key: 'documents/dev_user/doc_ghi789.png',
+    mime_type: 'image/png',
+    file_size: 320000,
+    status: 'extracted',
+    document_type: 'invoice',
+    error_message: null,
+    created_at: new Date(Date.now() - 172800000).toISOString(),
+    updated_at: new Date(Date.now() - 172700000).toISOString(),
+  },
+  {
+    id: 'doc_jkl012',
+    user_id: 'dev_user',
+    filename: 'receipt_grocery.jpg',
+    r2_key: 'documents/dev_user/doc_jkl012.jpg',
+    mime_type: 'image/jpeg',
+    file_size: 195000,
+    status: 'processing',
+    document_type: null,
+    error_message: null,
+    created_at: new Date(Date.now() - 600000).toISOString(),
+    updated_at: new Date(Date.now() - 500000).toISOString(),
+  },
+];
+
+export const mockExtractionResult: ExtractionResult = {
+  document_id: 'doc_new',
+  document_type: 'receipt',
+  processing_time_ms: 1847,
+  total_time_ms: 2103,
+  fields: [
+    { name: 'vendor', value: 'Shoppers Drug Mart', confidence: 0.97 },
+    { name: 'date', value: '2024-03-15', confidence: 0.92 },
+    { name: 'total', value: '47.83', confidence: 0.99 },
+    { name: 'tax', value: '6.22', confidence: 0.88 },
+    { name: 'payment_method', value: 'Visa ****4242', confidence: 0.95 },
+    { name: 'currency', value: 'CAD', confidence: 0.99 },
+  ],
+  raw: {
+    document_type: 'receipt',
+    vendor: { value: 'Shoppers Drug Mart', confidence: 0.97 },
+    date: { value: '2024-03-15', confidence: 0.92 },
+    total: { value: '47.83', confidence: 0.99 },
+    tax: { value: '6.22', confidence: 0.88 },
+  },
+};
+
+export const mockTemplates: FormTemplate[] = [
+  {
+    id: 'tmpl_receipt',
+    name: 'Receipt / Invoice',
+    description: 'Standard receipt or invoice extraction',
+    category: 'receipt',
+    fields_schema: '[{"name":"vendor","label":"Vendor Name","type":"text","required":true},{"name":"date","label":"Date","type":"date","required":true},{"name":"total","label":"Total Amount","type":"number","required":true},{"name":"tax","label":"Tax","type":"number","required":false}]',
+    template_html: null,
+    is_active: 1,
+    created_at: new Date(Date.now() - 30 * 86400000).toISOString(),
+  },
+  {
+    id: 'tmpl_t4',
+    name: 'T4 Statement',
+    description: 'Canadian T4 tax slip',
+    category: 'tax',
+    fields_schema: '[{"name":"employer","label":"Employer Name","type":"text","required":true},{"name":"year","label":"Tax Year","type":"number","required":true},{"name":"box_14","label":"Box 14 - Employment Income","type":"number","required":true}]',
+    template_html: null,
+    is_active: 1,
+    created_at: new Date(Date.now() - 30 * 86400000).toISOString(),
+  },
+  {
+    id: 'tmpl_generic',
+    name: 'Generic Document',
+    description: 'Catch-all document extraction',
+    category: 'generic',
+    fields_schema: '[{"name":"title","label":"Document Title","type":"text","required":false},{"name":"date","label":"Date","type":"date","required":false},{"name":"amount","label":"Amount","type":"number","required":false}]',
+    template_html: null,
+    is_active: 1,
+    created_at: new Date(Date.now() - 30 * 86400000).toISOString(),
+  },
+];

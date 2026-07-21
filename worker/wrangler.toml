@@ -7,7 +7,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "docufill-db"
-database_id = "REPLACE_WITH_ID"
+database_id = "b29e5066-29eb-4ea2-bf8d-e14bb664d95d"
 
 # R2 Bucket (document uploads + exports)
 [[r2_buckets]]
