@@ -1,6 +1,6 @@
 import type { Env } from '../types';
 import { jsonResponse, errorResponse } from '../middleware/cors';
-import { insertDocument, getDocument, listDocuments, updateDocumentStatus } from '../db/queries';
+import { insertDocument, getDocument, listDocuments, updateDocumentStatus, getExtractedFields } from '../db/queries';
 import { requireAuth } from '../middleware/auth';
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
@@ -103,6 +103,3 @@ function getExtension(filename: string): string {
   }
   return '.bin';
 }
-
-// Re-export for use in getDocumentById
-import { getExtractedFields } from '../db/queries';
