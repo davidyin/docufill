@@ -19,5 +19,5 @@ ENVIRONMENT = "production"
 MAX_FILE_SIZE_MB = "10"
 GEMINI_MODEL = "gemini-2.5-flash"
 # Clerk JWT Issuer (derived from publishable key)
-CLERK_JWT_ISSUER = "https://cute-phoenix-45.clerk.accounts.dev"
+CLERK_JWT_ISSUER = "https://casual-bengal-37.clerk.accounts.dev"
 CLERK_JWT_PUBLIC_KEY = ""

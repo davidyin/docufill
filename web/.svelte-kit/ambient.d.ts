@@ -52,7 +52,6 @@ declare module '$env/static/private' {
 	export const npm_config_globalconfig: string;
 	export const TERMINAL_CONTAINER_DISK: string;
 	export const VISION_TOOLS_DEBUG: string;
-	export const CLOUDFLARE_API_TOKEN: string;
 	export const npm_package_version: string;
 	export const prefill_messages_file: string;
 	export const npm_lifecycle_script: string;
@@ -60,7 +59,6 @@ declare module '$env/static/private' {
 	export const MOA_TOOLS_DEBUG: string;
 	export const HERMES_QUIET: string;
 	export const LANG: string;
-	export const TERMINAL_PERSISTENT_SHELL: string;
 	export const SYSTEMD_EXEC_PID: string;
 	export const TERMINAL_CONTAINER_PERSISTENT: string;
 	export const TERMINAL_CONTAINER_MEMORY: string;
@@ -106,10 +104,9 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const timezone: string;
 	export const SHLVL: string;
+	export const TERMINAL_PERSISTENT_SHELL: string;
 	export const USER: string;
 	export const COLOR: string;
-	export const CLOUDFLARE_ACCOUNT_ID: string;
-	export const TERMINAL_TIMEOUT: string;
 	export const HERMES_AGENT_TIMEOUT: string;
 	export const npm_command: string;
 	export const LOGNAME: string;
@@ -128,6 +125,7 @@ declare module '$env/static/private' {
 	export const npm_config_cache: string;
 	export const npm_node_execpath: string;
 	export const DISCORD_ALLOWED_CHANNELS: string;
+	export const TERMINAL_TIMEOUT: string;
 	export const SHELL: string;
 	export const npm_config_node_gyp: string;
 	export const TERMINAL_SINGULARITY_IMAGE: string;
@@ -234,7 +232,6 @@ declare module '$env/dynamic/private' {
 		npm_config_globalconfig: string;
 		TERMINAL_CONTAINER_DISK: string;
 		VISION_TOOLS_DEBUG: string;
-		CLOUDFLARE_API_TOKEN: string;
 		npm_package_version: string;
 		prefill_messages_file: string;
 		npm_lifecycle_script: string;
@@ -242,7 +239,6 @@ declare module '$env/dynamic/private' {
 		MOA_TOOLS_DEBUG: string;
 		HERMES_QUIET: string;
 		LANG: string;
-		TERMINAL_PERSISTENT_SHELL: string;
 		SYSTEMD_EXEC_PID: string;
 		TERMINAL_CONTAINER_PERSISTENT: string;
 		TERMINAL_CONTAINER_MEMORY: string;
@@ -288,10 +284,9 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		timezone: string;
 		SHLVL: string;
+		TERMINAL_PERSISTENT_SHELL: string;
 		USER: string;
 		COLOR: string;
-		CLOUDFLARE_ACCOUNT_ID: string;
-		TERMINAL_TIMEOUT: string;
 		HERMES_AGENT_TIMEOUT: string;
 		npm_command: string;
 		LOGNAME: string;
@@ -310,6 +305,7 @@ declare module '$env/dynamic/private' {
 		npm_config_cache: string;
 		npm_node_execpath: string;
 		DISCORD_ALLOWED_CHANNELS: string;
+		TERMINAL_TIMEOUT: string;
 		SHELL: string;
 		npm_config_node_gyp: string;
 		TERMINAL_SINGULARITY_IMAGE: string;
