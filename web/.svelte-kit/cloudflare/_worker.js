@@ -387,8 +387,8 @@ function subscribe(store, ...callbacks) {
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
   return new CustomEvent(type, { detail, bubbles, cancelable });
 }
-function set_current_component(component6) {
-  current_component = component6;
+function set_current_component(component8) {
+  current_component = component8;
 }
 function get_current_component() {
   if (!current_component) throw new Error("Function called outside component initialization");
@@ -398,9 +398,9 @@ function onDestroy(fn) {
   get_current_component().$$.on_destroy.push(fn);
 }
 function createEventDispatcher() {
-  const component6 = get_current_component();
+  const component8 = get_current_component();
   return (type, detail, { cancelable = false } = {}) => {
-    const callbacks = component6.$$.callbacks[type];
+    const callbacks = component8.$$.callbacks[type];
     if (callbacks) {
       const event = custom_event(
         /** @type {string} */
@@ -409,7 +409,7 @@ function createEventDispatcher() {
         { cancelable }
       );
       callbacks.slice().forEach((fn) => {
-        fn.call(component6, event);
+        fn.call(component8, event);
       });
       return !event.defaultPrevented;
     }
@@ -448,14 +448,14 @@ function each(items, fn) {
   }
   return str;
 }
-function validate_component(component6, name) {
-  if (!component6 || !component6.$$render) {
+function validate_component(component8, name) {
+  if (!component8 || !component8.$$render) {
     if (name === "svelte:component") name += " this={...}";
     throw new Error(
       `<${name}> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules. Otherwise you may need to fix a <${name}>.`
     );
   }
-  return component6;
+  return component8;
 }
 function create_ssr_component(fn) {
   function $$render(result, props, bindings, slots, context) {
@@ -483,7 +483,7 @@ function create_ssr_component(fn) {
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css) => css.code).join("\n"),
+          code: Array.from(result.css).map((css3) => css3.code).join("\n"),
           map: null
           // TODO
         },
@@ -637,20 +637,20 @@ var require_cookie = __commonJS({
       var obj = {};
       var opt = options2 || {};
       var dec = opt.decode || decode;
-      var index6 = 0;
-      while (index6 < str.length) {
-        var eqIdx = str.indexOf("=", index6);
+      var index8 = 0;
+      while (index8 < str.length) {
+        var eqIdx = str.indexOf("=", index8);
         if (eqIdx === -1) {
           break;
         }
-        var endIdx = str.indexOf(";", index6);
+        var endIdx = str.indexOf(";", index8);
         if (endIdx === -1) {
           endIdx = str.length;
         } else if (endIdx < eqIdx) {
-          index6 = str.lastIndexOf(";", eqIdx - 1) + 1;
+          index8 = str.lastIndexOf(";", eqIdx - 1) + 1;
           continue;
         }
-        var key2 = str.slice(index6, eqIdx).trim();
+        var key2 = str.slice(index8, eqIdx).trim();
         if (void 0 === obj[key2]) {
           var val = str.slice(eqIdx + 1, endIdx).trim();
           if (val.charCodeAt(0) === 34) {
@@ -658,7 +658,7 @@ var require_cookie = __commonJS({
           }
           obj[key2] = tryDecode(val, dec);
         }
-        index6 = endIdx + 1;
+        index8 = endIdx + 1;
       }
       return obj;
     }
@@ -943,7 +943,7 @@ var init_layout_svelte = __esm({
       });
       $$unsubscribe_authReady();
       $$unsubscribe_isSignedIn();
-      return `${$$result.head += `<!-- HEAD_svelte-6auexh_START -->${$$result.title = `<title>DocuFill \u2014 AI Document Extraction</title>`, ""}<!-- HEAD_svelte-6auexh_END -->`, ""} ${!$authReady ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary"><div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-5 shadow-lg shadow-docufill-orange/20" data-svelte-h="svelte-kfkad8"><span class="text-2xl">\u{1F4C4}</span></div> ${validate_component(Spinner, "Spinner").$$render($$result, { size: "md" }, {}, {})} <span class="text-text-tertiary text-sm mt-4" data-svelte-h="svelte-tbft8b">Loading DocuFill...</span></div>` : `${!$isSignedIn ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-sm"> <div class="text-center mb-8" data-svelte-h="svelte-10udcpm"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">AI-Powered Document Extraction</p></div>  <button class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow" data-svelte-h="svelte-1ex272u">Sign In to Continue</button> <p class="text-text-tertiary text-xs text-center mt-4" data-svelte-h="svelte-pm51hq">By signing in, you agree to our Terms of Service and Privacy Policy</p></div></div>` : ` <div class="flex overflow-hidden" style="height: var(--app-height);"> ${``} <div class="flex-1 flex flex-col overflow-hidden"> ${validate_component(TopBar, "TopBar").$$render($$result, {}, {}, {})}  <main class="flex-1 overflow-hidden">${slots.default ? slots.default({}) : ``}</main>  ${`<div class="safe-bottom">${validate_component(Sidebar, "Sidebar").$$render($$result, { isDesktop }, {}, {})}</div>`}</div></div>`}`}`;
+      return `${$$result.head += `<!-- HEAD_svelte-6auexh_START -->${$$result.title = `<title>DocuFill \u2014 AI Document Extraction</title>`, ""}<!-- HEAD_svelte-6auexh_END -->`, ""} ${!$authReady ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary"><div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-5 shadow-lg shadow-docufill-orange/20" data-svelte-h="svelte-kfkad8"><span class="text-2xl">\u{1F4C4}</span></div> ${validate_component(Spinner, "Spinner").$$render($$result, { size: "md" }, {}, {})} <span class="text-text-tertiary text-sm mt-4" data-svelte-h="svelte-tbft8b">Loading DocuFill...</span></div>` : `${!$isSignedIn ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary p-6" data-svelte-h="svelte-k5l9sw"><div class="w-full max-w-sm"> <div class="text-center mb-8"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">AI-Powered Document Extraction</p></div>  <a href="/sign-in" class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow inline-block text-center">Sign In to Continue</a> <p class="text-text-tertiary text-xs text-center mt-4">Don&#39;t have an account? <a href="/sign-up" class="text-docufill-orange">Sign up</a></p></div></div>` : ` <div class="flex overflow-hidden" style="height: var(--app-height);"> ${``} <div class="flex-1 flex flex-col overflow-hidden"> ${validate_component(TopBar, "TopBar").$$render($$result, {}, {}, {})}  <main class="flex-1 overflow-hidden">${slots.default ? slots.default({}) : ``}</main>  ${`<div class="safe-bottom">${validate_component(Sidebar, "Sidebar").$$render($$result, { isDesktop }, {}, {})}</div>`}</div></div>`}`}`;
     });
   }
 });
@@ -962,8 +962,8 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     index = 0;
     component = async () => component_cache ??= (await Promise.resolve().then(() => (init_layout_svelte(), layout_svelte_exports))).default;
-    imports = ["_app/immutable/nodes/0.D3yYtwvd.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/BaysXZQe.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/2Ur9fhgk.js", "_app/immutable/chunks/5TlF5TVw.js"];
-    stylesheets = ["_app/immutable/assets/0.BBHF7KAA.css"];
+    imports = ["_app/immutable/nodes/0.DAVHifO1.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js", "_app/immutable/chunks/VvdaNgt9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/82OgMF93.js", "_app/immutable/chunks/lYFDwb0e.js", "_app/immutable/chunks/Dpi9_WBl.js", "_app/immutable/chunks/CDlB9XO6.js"];
+    stylesheets = ["_app/immutable/assets/0.DjrIl7wk.css"];
     fonts = [];
   }
 });
@@ -1001,7 +1001,7 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     index2 = 1;
     component2 = async () => component_cache2 ??= (await Promise.resolve().then(() => (init_error_svelte(), error_svelte_exports))).default;
-    imports2 = ["_app/immutable/nodes/1.whSwg3tz.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/2Ur9fhgk.js", "_app/immutable/chunks/5TlF5TVw.js", "_app/immutable/chunks/p7EzOC4P.js"];
+    imports2 = ["_app/immutable/nodes/1.DcilV4eG.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js", "_app/immutable/chunks/lYFDwb0e.js", "_app/immutable/chunks/Dpi9_WBl.js", "_app/immutable/chunks/CDlB9XO6.js", "_app/immutable/chunks/82OgMF93.js"];
     stylesheets2 = [];
     fonts2 = [];
   }
@@ -1165,7 +1165,7 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     index3 = 2;
     component3 = async () => component_cache3 ??= (await Promise.resolve().then(() => (init_page_svelte(), page_svelte_exports))).default;
-    imports3 = ["_app/immutable/nodes/2.CqdZB0yb.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/BaysXZQe.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/DPe6kyJV.js"];
+    imports3 = ["_app/immutable/nodes/2.I5lRrmZR.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js", "_app/immutable/chunks/VvdaNgt9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/82OgMF93.js", "_app/immutable/chunks/CWAJ9BYK.js"];
     stylesheets3 = [];
     fonts3 = [];
   }
@@ -1211,16 +1211,101 @@ var init__4 = __esm({
   ".svelte-kit/output/server/nodes/3.js"() {
     index4 = 3;
     component4 = async () => component_cache4 ??= (await Promise.resolve().then(() => (init_page_svelte2(), page_svelte_exports2))).default;
-    imports4 = ["_app/immutable/nodes/3.Ba0mGogu.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/BaysXZQe.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/2Ur9fhgk.js", "_app/immutable/chunks/5TlF5TVw.js", "_app/immutable/chunks/DPe6kyJV.js", "_app/immutable/chunks/qX2YeMjJ.js"];
+    imports4 = ["_app/immutable/nodes/3.DshzPD1p.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js", "_app/immutable/chunks/VvdaNgt9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/82OgMF93.js", "_app/immutable/chunks/lYFDwb0e.js", "_app/immutable/chunks/Dpi9_WBl.js", "_app/immutable/chunks/CDlB9XO6.js", "_app/immutable/chunks/CWAJ9BYK.js", "_app/immutable/chunks/DeoPP2in.js"];
     stylesheets4 = [];
     fonts4 = [];
   }
 });
 
-// .svelte-kit/output/server/entries/pages/upload/_page.svelte.js
+// .svelte-kit/output/server/entries/pages/sign-in/_page.svelte.js
 var page_svelte_exports3 = {};
 __export(page_svelte_exports3, {
   default: () => Page3
+});
+var css, Page3;
+var init_page_svelte3 = __esm({
+  ".svelte-kit/output/server/entries/pages/sign-in/_page.svelte.js"() {
+    init_ssr();
+    init_internal();
+    init_exports();
+    init_utils2();
+    init_server();
+    init_state_svelte();
+    css = {
+      code: ".cl-card{background:transparent !important;box-shadow:none !important;padding:0 !important}.cl-headerTitle{color:#fff !important}.cl-headerSubtitle,.cl-formFieldLabel{color:rgba(255,255,255,0.6) !important}.cl-formFieldInput{background:rgba(255,255,255,0.05) !important;border:1px solid rgba(255,255,255,0.1) !important;color:#fff !important}.cl-formFieldInput:focus{border-color:#FF6A1A !important;box-shadow:0 0 0 2px rgba(255,106,26,0.3) !important}.cl-formButtonPrimary{background:linear-gradient(135deg, #FF6A1A, #FFB000) !important;color:#000 !important;font-weight:600 !important}.cl-footerActionText,.cl-footerActionLink{color:rgba(255,255,255,0.6) !important}.cl-footerActionLink{color:#FF6A1A !important}",
+      map: `{"version":3,"file":"+page.svelte","sources":["+page.svelte"],"sourcesContent":["<script lang=\\"ts\\">import { onMount } from \\"svelte\\";\\nimport { goto } from \\"$app/navigation\\";\\nconst publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;\\nlet mountEl;\\nlet status = \\"loading\\";\\nlet errorMsg = \\"\\";\\nonMount(async () => {\\n  if (!publishableKey) {\\n    status = \\"error\\";\\n    errorMsg = \\"Clerk not configured\\";\\n    return;\\n  }\\n  try {\\n    const { Clerk } = await import(\\"@clerk/clerk-js\\");\\n    const clerk = new Clerk(publishableKey);\\n    await clerk.load();\\n    status = \\"ready\\";\\n    clerk.mountSignIn(mountEl, {\\n      redirectUrl: window.location.origin\\n    });\\n  } catch (err) {\\n    console.error(\\"[Clerk] Init error:\\", err);\\n    status = \\"error\\";\\n    errorMsg = err.message || \\"Failed to load Clerk\\";\\n  }\\n});\\n<\/script>\\n\\n<svelte:head>\\n  <title>Sign In \u2014 DocuFill</title>\\n</svelte:head>\\n\\n<div class=\\"min-h-screen flex items-center justify-center bg-bg-primary p-6\\">\\n  <div class=\\"w-full max-w-md\\">\\n    <!-- Header -->\\n    <div class=\\"text-center mb-8\\">\\n      <div class=\\"w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20\\">\\n        <span class=\\"text-3xl\\">\u{1F4C4}</span>\\n      </div>\\n      <h1 class=\\"text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent\\">\\n        DocuFill\\n      </h1>\\n      <p class=\\"text-text-tertiary text-sm mt-2\\">Sign in to continue</p>\\n    </div>\\n\\n    <!-- Loading -->\\n    {#if status === 'loading'}\\n      <div class=\\"flex flex-col items-center py-8 gap-3\\">\\n        <div class=\\"w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin\\"></div>\\n        <span class=\\"text-text-tertiary text-sm\\">Loading sign-in\u2026</span>\\n      </div>\\n    {/if}\\n\\n    <!-- Error -->\\n    {#if status === 'error'}\\n      <div class=\\"glass rounded-2xl p-6 text-center\\">\\n        <p class=\\"text-docufill-red text-sm mb-3\\">{errorMsg}</p>\\n        <button\\n          on:click={() => window.location.reload()}\\n          class=\\"px-4 py-2 bg-docufill-orange text-black text-sm font-medium rounded-xl touchable\\"\\n        >\\n          Try again\\n        </button>\\n      </div>\\n    {/if}\\n\\n    <!-- Clerk SignIn mount point -->\\n    {#if status === 'ready'}\\n      <div bind:this={mountEl} class=\\"clerk-mount\\"></div>\\n    {/if}\\n  </div>\\n</div>\\n\\n<style>\\n  /* Ensure Clerk card is visible and styled */\\n  :global(.cl-card) {\\n    background: transparent !important;\\n    box-shadow: none !important;\\n    padding: 0 !important;\\n  }\\n  :global(.cl-headerTitle) {\\n    color: #fff !important;\\n  }\\n  :global(.cl-headerSubtitle),\\n  :global(.cl-formFieldLabel) {\\n    color: rgba(255,255,255,0.6) !important;\\n  }\\n  :global(.cl-formFieldInput) {\\n    background: rgba(255,255,255,0.05) !important;\\n    border: 1px solid rgba(255,255,255,0.1) !important;\\n    color: #fff !important;\\n  }\\n  :global(.cl-formFieldInput:focus) {\\n    border-color: #FF6A1A !important;\\n    box-shadow: 0 0 0 2px rgba(255,106,26,0.3) !important;\\n  }\\n  :global(.cl-formButtonPrimary) {\\n    background: linear-gradient(135deg, #FF6A1A, #FFB000) !important;\\n    color: #000 !important;\\n    font-weight: 600 !important;\\n  }\\n  :global(.cl-footerActionText),\\n  :global(.cl-footerActionLink) {\\n    color: rgba(255,255,255,0.6) !important;\\n  }\\n  :global(.cl-footerActionLink) {\\n    color: #FF6A1A !important;\\n  }\\n</style>\\n"],"names":[],"mappings":"AA2EU,QAAU,CAChB,UAAU,CAAE,WAAW,CAAC,UAAU,CAClC,UAAU,CAAE,IAAI,CAAC,UAAU,CAC3B,OAAO,CAAE,CAAC,CAAC,UACb,CACQ,eAAiB,CACvB,KAAK,CAAE,IAAI,CAAC,UACd,CACQ,kBAAmB,CACnB,kBAAoB,CAC1B,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAC/B,CACQ,kBAAoB,CAC1B,UAAU,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC,UAAU,CAC7C,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAU,CAClD,KAAK,CAAE,IAAI,CAAC,UACd,CACQ,wBAA0B,CAChC,YAAY,CAAE,OAAO,CAAC,UAAU,CAChC,UAAU,CAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,CAAC,CAAC,UAC7C,CACQ,qBAAuB,CAC7B,UAAU,CAAE,gBAAgB,MAAM,CAAC,CAAC,OAAO,CAAC,CAAC,OAAO,CAAC,CAAC,UAAU,CAChE,KAAK,CAAE,IAAI,CAAC,UAAU,CACtB,WAAW,CAAE,GAAG,CAAC,UACnB,CACQ,oBAAqB,CACrB,oBAAsB,CAC5B,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAC/B,CACQ,oBAAsB,CAC5B,KAAK,CAAE,OAAO,CAAC,UACjB"}`
+    };
+    Page3 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css);
+      return `${$$result.head += `<!-- HEAD_svelte-1rdgtk1_START -->${$$result.title = `<title>Sign In \u2014 DocuFill</title>`, ""}<!-- HEAD_svelte-1rdgtk1_END -->`, ""} <div class="min-h-screen flex items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-md"> <div class="text-center mb-8" data-svelte-h="svelte-5jxdt3"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">Sign in to continue</p></div>  ${`<div class="flex flex-col items-center py-8 gap-3" data-svelte-h="svelte-1nltzpm"><div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div> <span class="text-text-tertiary text-sm">Loading sign-in\u2026</span></div>`}  ${``}  ${``}</div> </div>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/4.js
+var __exports5 = {};
+__export(__exports5, {
+  component: () => component5,
+  fonts: () => fonts5,
+  imports: () => imports5,
+  index: () => index5,
+  stylesheets: () => stylesheets5
+});
+var index5, component_cache5, component5, imports5, stylesheets5, fonts5;
+var init__5 = __esm({
+  ".svelte-kit/output/server/nodes/4.js"() {
+    index5 = 4;
+    component5 = async () => component_cache5 ??= (await Promise.resolve().then(() => (init_page_svelte3(), page_svelte_exports3))).default;
+    imports5 = ["_app/immutable/nodes/4.r_YWBviG.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js", "_app/immutable/chunks/CDlB9XO6.js", "_app/immutable/chunks/82OgMF93.js"];
+    stylesheets5 = ["_app/immutable/assets/4.DpTW3rfD.css"];
+    fonts5 = [];
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/sign-up/_page.svelte.js
+var page_svelte_exports4 = {};
+__export(page_svelte_exports4, {
+  default: () => Page4
+});
+var css2, Page4;
+var init_page_svelte4 = __esm({
+  ".svelte-kit/output/server/entries/pages/sign-up/_page.svelte.js"() {
+    init_ssr();
+    css2 = {
+      code: ".cl-card{background:transparent !important;box-shadow:none !important;padding:0 !important}.cl-headerTitle{color:#fff !important}.cl-headerSubtitle,.cl-formFieldLabel{color:rgba(255,255,255,0.6) !important}.cl-formFieldInput{background:rgba(255,255,255,0.05) !important;border:1px solid rgba(255,255,255,0.1) !important;color:#fff !important}.cl-formFieldInput:focus{border-color:#FF6A1A !important;box-shadow:0 0 0 2px rgba(255,106,26,0.3) !important}.cl-formButtonPrimary{background:linear-gradient(135deg, #FF6A1A, #FFB000) !important;color:#000 !important;font-weight:600 !important}.cl-footerActionText,.cl-footerActionLink{color:rgba(255,255,255,0.6) !important}.cl-footerActionLink{color:#FF6A1A !important}",
+      map: `{"version":3,"file":"+page.svelte","sources":["+page.svelte"],"sourcesContent":["<script lang=\\"ts\\">import { onMount } from \\"svelte\\";\\nconst publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;\\nlet mountEl;\\nlet status = \\"loading\\";\\nlet errorMsg = \\"\\";\\nonMount(async () => {\\n  if (!publishableKey) {\\n    status = \\"error\\";\\n    errorMsg = \\"Clerk not configured\\";\\n    return;\\n  }\\n  try {\\n    const { Clerk } = await import(\\"@clerk/clerk-js\\");\\n    const clerk = new Clerk(publishableKey);\\n    await clerk.load();\\n    status = \\"ready\\";\\n    clerk.mountSignUp(mountEl, {\\n      redirectUrl: window.location.origin\\n    });\\n  } catch (err) {\\n    console.error(\\"[Clerk] Init error:\\", err);\\n    status = \\"error\\";\\n    errorMsg = err.message || \\"Failed to load Clerk\\";\\n  }\\n});\\n<\/script>\\n\\n<svelte:head>\\n  <title>Sign Up \u2014 DocuFill</title>\\n</svelte:head>\\n\\n<div class=\\"min-h-screen flex items-center justify-center bg-bg-primary p-6\\">\\n  <div class=\\"w-full max-w-md\\">\\n    <div class=\\"text-center mb-8\\">\\n      <div class=\\"w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20\\">\\n        <span class=\\"text-3xl\\">\u{1F4C4}</span>\\n      </div>\\n      <h1 class=\\"text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent\\">\\n        DocuFill\\n      </h1>\\n      <p class=\\"text-text-tertiary text-sm mt-2\\">Create your account</p>\\n    </div>\\n\\n    {#if status === 'loading'}\\n      <div class=\\"flex flex-col items-center py-8 gap-3\\">\\n        <div class=\\"w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin\\"></div>\\n        <span class=\\"text-text-tertiary text-sm\\">Loading\u2026</span>\\n      </div>\\n    {/if}\\n\\n    {#if status === 'error'}\\n      <div class=\\"glass rounded-2xl p-6 text-center\\">\\n        <p class=\\"text-docufill-red text-sm mb-3\\">{errorMsg}</p>\\n        <button\\n          on:click={() => window.location.reload()}\\n          class=\\"px-4 py-2 bg-docufill-orange text-black text-sm font-medium rounded-xl touchable\\"\\n        >\\n          Try again\\n        </button>\\n      </div>\\n    {/if}\\n\\n    {#if status === 'ready'}\\n      <div bind:this={mountEl} class=\\"clerk-mount\\"></div>\\n    {/if}\\n  </div>\\n</div>\\n\\n<style>\\n  :global(.cl-card) {\\n    background: transparent !important;\\n    box-shadow: none !important;\\n    padding: 0 !important;\\n  }\\n  :global(.cl-headerTitle) { color: #fff !important; }\\n  :global(.cl-headerSubtitle),\\n  :global(.cl-formFieldLabel) { color: rgba(255,255,255,0.6) !important; }\\n  :global(.cl-formFieldInput) {\\n    background: rgba(255,255,255,0.05) !important;\\n    border: 1px solid rgba(255,255,255,0.1) !important;\\n    color: #fff !important;\\n  }\\n  :global(.cl-formFieldInput:focus) {\\n    border-color: #FF6A1A !important;\\n    box-shadow: 0 0 0 2px rgba(255,106,26,0.3) !important;\\n  }\\n  :global(.cl-formButtonPrimary) {\\n    background: linear-gradient(135deg, #FF6A1A, #FFB000) !important;\\n    color: #000 !important;\\n    font-weight: 600 !important;\\n  }\\n  :global(.cl-footerActionText),\\n  :global(.cl-footerActionLink) { color: rgba(255,255,255,0.6) !important; }\\n  :global(.cl-footerActionLink) { color: #FF6A1A !important; }\\n</style>\\n"],"names":[],"mappings":"AAqEU,QAAU,CAChB,UAAU,CAAE,WAAW,CAAC,UAAU,CAClC,UAAU,CAAE,IAAI,CAAC,UAAU,CAC3B,OAAO,CAAE,CAAC,CAAC,UACb,CACQ,eAAiB,CAAE,KAAK,CAAE,IAAI,CAAC,UAAY,CAC3C,kBAAmB,CACnB,kBAAoB,CAAE,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAY,CAC/D,kBAAoB,CAC1B,UAAU,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC,UAAU,CAC7C,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAU,CAClD,KAAK,CAAE,IAAI,CAAC,UACd,CACQ,wBAA0B,CAChC,YAAY,CAAE,OAAO,CAAC,UAAU,CAChC,UAAU,CAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,CAAC,CAAC,UAC7C,CACQ,qBAAuB,CAC7B,UAAU,CAAE,gBAAgB,MAAM,CAAC,CAAC,OAAO,CAAC,CAAC,OAAO,CAAC,CAAC,UAAU,CAChE,KAAK,CAAE,IAAI,CAAC,UAAU,CACtB,WAAW,CAAE,GAAG,CAAC,UACnB,CACQ,oBAAqB,CACrB,oBAAsB,CAAE,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAY,CACjE,oBAAsB,CAAE,KAAK,CAAE,OAAO,CAAC,UAAY"}`
+    };
+    Page4 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css2);
+      return `${$$result.head += `<!-- HEAD_svelte-1e8ihgv_START -->${$$result.title = `<title>Sign Up \u2014 DocuFill</title>`, ""}<!-- HEAD_svelte-1e8ihgv_END -->`, ""} <div class="min-h-screen flex items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-md"><div class="text-center mb-8" data-svelte-h="svelte-18km2zh"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">Create your account</p></div> ${`<div class="flex flex-col items-center py-8 gap-3" data-svelte-h="svelte-wvbruj"><div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div> <span class="text-text-tertiary text-sm">Loading\u2026</span></div>`} ${``} ${``}</div> </div>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/5.js
+var __exports6 = {};
+__export(__exports6, {
+  component: () => component6,
+  fonts: () => fonts6,
+  imports: () => imports6,
+  index: () => index6,
+  stylesheets: () => stylesheets6
+});
+var index6, component_cache6, component6, imports6, stylesheets6, fonts6;
+var init__6 = __esm({
+  ".svelte-kit/output/server/nodes/5.js"() {
+    index6 = 5;
+    component6 = async () => component_cache6 ??= (await Promise.resolve().then(() => (init_page_svelte4(), page_svelte_exports4))).default;
+    imports6 = ["_app/immutable/nodes/5.BEEdbOaX.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js"];
+    stylesheets6 = ["_app/immutable/assets/4.DpTW3rfD.css"];
+    fonts6 = [];
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/upload/_page.svelte.js
+var page_svelte_exports5 = {};
+__export(page_svelte_exports5, {
+  default: () => Page5
 });
 function getClasses2(variant2, size2, disabled2, loading2, fullWidth2) {
   const base2 = "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-150 touchable relative overflow-hidden";
@@ -1241,8 +1326,8 @@ function getClasses2(variant2, size2, disabled2, loading2, fullWidth2) {
   ];
   return `${base2} ${sizes[size2]} ${variants[variant2]} ${extras.join(" ")}`;
 }
-var Button, Dropzone, Page3;
-var init_page_svelte3 = __esm({
+var Button, Dropzone, Page5;
+var init_page_svelte5 = __esm({
   ".svelte-kit/output/server/entries/pages/upload/_page.svelte.js"() {
     init_ssr();
     init_internal();
@@ -1282,7 +1367,7 @@ var init_page_svelte3 = __esm({
         " border-border-default bg-bg-card " + (!disabled ? "hover:border-border-active" : "")
       ].join(" ").trim()}" ${disabled ? "disabled" : ""}>${`<div class="flex flex-col items-center gap-3" data-svelte-h="svelte-gpk37w"><div class="w-16 h-16 rounded-full bg-bg-elevated flex items-center justify-center"><svg class="w-7 h-7 text-text-secondary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3-3m0 0l3 3m-3-3v9M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div> <div class="text-center"><p class="text-text-primary font-medium mb-1">Drag &amp; drop your document</p> <p class="text-text-tertiary text-sm">or click to browse files</p></div> <div class="flex flex-wrap gap-1.5 mt-1"><span class="px-2 py-0.5 bg-bg-elevated rounded text-[10px] text-text-tertiary font-mono">JPG</span> <span class="px-2 py-0.5 bg-bg-elevated rounded text-[10px] text-text-tertiary font-mono">PNG</span> <span class="px-2 py-0.5 bg-bg-elevated rounded text-[10px] text-text-tertiary font-mono">WEBP</span> <span class="px-2 py-0.5 bg-bg-elevated rounded text-[10px] text-text-tertiary font-mono">PDF</span></div></div>`}</button>  <input type="file"${add_attribute("accept", accept, 0)} class="hidden"></div>`;
     });
-    Page3 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+    Page5 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let $$unsubscribe_upload;
       $$unsubscribe_upload = subscribe(upload, (value) => value);
       onDestroy(() => {
@@ -1298,23 +1383,23 @@ var init_page_svelte3 = __esm({
   }
 });
 
-// .svelte-kit/output/server/nodes/4.js
-var __exports5 = {};
-__export(__exports5, {
-  component: () => component5,
-  fonts: () => fonts5,
-  imports: () => imports5,
-  index: () => index5,
-  stylesheets: () => stylesheets5
+// .svelte-kit/output/server/nodes/6.js
+var __exports7 = {};
+__export(__exports7, {
+  component: () => component7,
+  fonts: () => fonts7,
+  imports: () => imports7,
+  index: () => index7,
+  stylesheets: () => stylesheets7
 });
-var index5, component_cache5, component5, imports5, stylesheets5, fonts5;
-var init__5 = __esm({
-  ".svelte-kit/output/server/nodes/4.js"() {
-    index5 = 4;
-    component5 = async () => component_cache5 ??= (await Promise.resolve().then(() => (init_page_svelte3(), page_svelte_exports3))).default;
-    imports5 = ["_app/immutable/nodes/4.CNfarp8r.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/BaysXZQe.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/5TlF5TVw.js", "_app/immutable/chunks/DPe6kyJV.js", "_app/immutable/chunks/qX2YeMjJ.js"];
-    stylesheets5 = [];
-    fonts5 = [];
+var index7, component_cache7, component7, imports7, stylesheets7, fonts7;
+var init__7 = __esm({
+  ".svelte-kit/output/server/nodes/6.js"() {
+    index7 = 6;
+    component7 = async () => component_cache7 ??= (await Promise.resolve().then(() => (init_page_svelte5(), page_svelte_exports5))).default;
+    imports7 = ["_app/immutable/nodes/6.DM4NTpCB.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js", "_app/immutable/chunks/VvdaNgt9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/82OgMF93.js", "_app/immutable/chunks/Dpi9_WBl.js", "_app/immutable/chunks/CDlB9XO6.js", "_app/immutable/chunks/CWAJ9BYK.js", "_app/immutable/chunks/DeoPP2in.js"];
+    stylesheets7 = [];
+    fonts7 = [];
   }
 });
 
@@ -1892,19 +1977,19 @@ function unflatten(parsed, revivers) {
   );
   const hydrated = Array(values.length);
   let hydrating = null;
-  function hydrate(index6, standalone = false) {
-    if (index6 === UNDEFINED) return void 0;
-    if (index6 === NAN) return NaN;
-    if (index6 === POSITIVE_INFINITY) return Infinity;
-    if (index6 === NEGATIVE_INFINITY) return -Infinity;
-    if (index6 === NEGATIVE_ZERO) return -0;
-    if (standalone || typeof index6 !== "number") {
+  function hydrate(index8, standalone = false) {
+    if (index8 === UNDEFINED) return void 0;
+    if (index8 === NAN) return NaN;
+    if (index8 === POSITIVE_INFINITY) return Infinity;
+    if (index8 === NEGATIVE_INFINITY) return -Infinity;
+    if (index8 === NEGATIVE_ZERO) return -0;
+    if (standalone || typeof index8 !== "number") {
       throw new Error(`Invalid input`);
     }
-    if (index6 in hydrated) return hydrated[index6];
-    const value = values[index6];
+    if (index8 in hydrated) return hydrated[index8];
+    const value = values[index8];
     if (!value || typeof value !== "object") {
-      hydrated[index6] = value;
+      hydrated[index8] = value;
     } else if (Array.isArray(value)) {
       if (typeof value[0] === "string") {
         const type = value[0];
@@ -1915,52 +2000,52 @@ function unflatten(parsed, revivers) {
             i = values.push(value[1]) - 1;
           }
           if (Object.hasOwn(hydrated, i)) {
-            return hydrated[index6] = reviver(hydrated[i]);
+            return hydrated[index8] = reviver(hydrated[i]);
           }
           hydrating ??= /* @__PURE__ */ new Set();
           if (hydrating.has(i)) {
             throw new Error("Invalid circular reference");
           }
           hydrating.add(i);
-          hydrated[index6] = reviver(hydrate(i));
+          hydrated[index8] = reviver(hydrate(i));
           hydrating.delete(i);
-          return hydrated[index6];
+          return hydrated[index8];
         }
         switch (type) {
           case "Date":
-            hydrated[index6] = new Date(value[1]);
+            hydrated[index8] = new Date(value[1]);
             break;
           case "Set":
             const set = /* @__PURE__ */ new Set();
-            hydrated[index6] = set;
+            hydrated[index8] = set;
             for (let i = 1; i < value.length; i += 1) {
               set.add(hydrate(value[i]));
             }
             break;
           case "Map":
             const map = /* @__PURE__ */ new Map();
-            hydrated[index6] = map;
+            hydrated[index8] = map;
             for (let i = 1; i < value.length; i += 2) {
               map.set(hydrate(value[i]), hydrate(value[i + 1]));
             }
             break;
           case "RegExp":
-            hydrated[index6] = new RegExp(value[1], value[2]);
+            hydrated[index8] = new RegExp(value[1], value[2]);
             break;
           case "Object": {
             const wrapped_index = value[1];
             if (typeof values[wrapped_index] === "object" && values[wrapped_index][0] !== "BigInt") {
               throw new Error("Invalid input");
             }
-            hydrated[index6] = Object(hydrate(wrapped_index));
+            hydrated[index8] = Object(hydrate(wrapped_index));
             break;
           }
           case "BigInt":
-            hydrated[index6] = BigInt(value[1]);
+            hydrated[index8] = BigInt(value[1]);
             break;
           case "null":
             const obj = /* @__PURE__ */ Object.create(null);
-            hydrated[index6] = obj;
+            hydrated[index8] = obj;
             for (let i = 1; i < value.length; i += 2) {
               if (value[i] === "__proto__") {
                 throw new Error("Cannot parse an object with a `__proto__` property");
@@ -1986,7 +2071,7 @@ function unflatten(parsed, revivers) {
             }
             const TypedArrayConstructor = globalThis[type];
             const buffer2 = hydrate(value[1]);
-            hydrated[index6] = value[2] !== void 0 ? new TypedArrayConstructor(buffer2, value[2], value[3]) : new TypedArrayConstructor(buffer2);
+            hydrated[index8] = value[2] !== void 0 ? new TypedArrayConstructor(buffer2, value[2], value[3]) : new TypedArrayConstructor(buffer2);
             break;
           }
           case "ArrayBuffer": {
@@ -1995,7 +2080,7 @@ function unflatten(parsed, revivers) {
               throw new Error("Invalid ArrayBuffer encoding");
             }
             const arraybuffer = decode64(base64);
-            hydrated[index6] = arraybuffer;
+            hydrated[index8] = arraybuffer;
             break;
           }
           case "Temporal.Duration":
@@ -2007,17 +2092,17 @@ function unflatten(parsed, revivers) {
           case "Temporal.PlainYearMonth":
           case "Temporal.ZonedDateTime": {
             const temporalName = type.slice(9);
-            hydrated[index6] = Temporal[temporalName].from(value[1]);
+            hydrated[index8] = Temporal[temporalName].from(value[1]);
             break;
           }
           case "URL": {
             const url = new URL(value[1]);
-            hydrated[index6] = url;
+            hydrated[index8] = url;
             break;
           }
           case "URLSearchParams": {
             const url = new URLSearchParams(value[1]);
-            hydrated[index6] = url;
+            hydrated[index8] = url;
             break;
           }
           default:
@@ -2029,7 +2114,7 @@ function unflatten(parsed, revivers) {
           throw new Error("Invalid input");
         }
         const array2 = [];
-        hydrated[index6] = array2;
+        hydrated[index8] = array2;
         array2[MAX_ARRAY_INDEX] = void 0;
         delete array2[MAX_ARRAY_INDEX];
         for (let i = 2; i < value.length; i += 2) {
@@ -2042,7 +2127,7 @@ function unflatten(parsed, revivers) {
         array2.length = len;
       } else {
         const array2 = new Array(value.length);
-        hydrated[index6] = array2;
+        hydrated[index8] = array2;
         for (let i = 0; i < value.length; i += 1) {
           const n2 = value[i];
           if (n2 === HOLE) continue;
@@ -2051,7 +2136,7 @@ function unflatten(parsed, revivers) {
       }
     } else {
       const object = {};
-      hydrated[index6] = object;
+      hydrated[index8] = object;
       for (const key2 of Object.keys(value)) {
         if (key2 === "__proto__") {
           throw new Error("Cannot parse an object with a `__proto__` property");
@@ -2060,7 +2145,7 @@ function unflatten(parsed, revivers) {
         object[key2] = hydrate(n2);
       }
     }
-    return hydrated[index6];
+    return hydrated[index8];
   }
   return hydrate(0);
 }
@@ -2081,7 +2166,7 @@ function run(async, value, reducers) {
   }
   const keys = [];
   let p = 0;
-  function flatten(thing, index7) {
+  function flatten(thing, index9) {
     if (thing === void 0) return UNDEFINED;
     if (Number.isNaN(thing)) return NAN;
     if (thing === Infinity) return POSITIVE_INFINITY;
@@ -2091,13 +2176,13 @@ function run(async, value, reducers) {
       /** @type {number} */
       indexes.get(thing)
     );
-    index7 ??= p++;
-    indexes.set(thing, index7);
+    index9 ??= p++;
+    indexes.set(thing, index9);
     for (const { key: key2, fn } of custom) {
       const value2 = fn(thing);
       if (value2) {
-        stringified[index7] = `["${key2}",${flatten(value2)}]`;
-        return index7;
+        stringified[index9] = `["${key2}",${flatten(value2)}]`;
+        return index9;
       }
     }
     if (typeof thing === "function") {
@@ -2118,8 +2203,8 @@ function run(async, value, reducers) {
         );
       }
       str = Promise.resolve(thing).then((value2) => {
-        const i = flatten(value2, index7);
-        if (i < 0) stringified[index7] = i;
+        const i = flatten(value2, index9);
+        if (i < 0) stringified[index9] = i;
       });
     } else {
       const type = get_type(thing);
@@ -2288,11 +2373,11 @@ function run(async, value, reducers) {
           }
       }
     }
-    stringified[index7] = str;
-    return index7;
+    stringified[index9] = str;
+    return index9;
   }
-  const index6 = flatten(value);
-  if (index6 < 0) return `${index6}`;
+  const index8 = flatten(value);
+  if (index8 < 0) return `${index8}`;
   return stringified;
 }
 function stringify_primitive2(thing) {
@@ -2623,14 +2708,14 @@ async function deserialize_binary_form(request) {
   }
   const reader = request.body.getReader();
   const chunks = [];
-  function get_chunk(index6) {
-    if (index6 in chunks) return chunks[index6];
+  function get_chunk(index8) {
+    if (index8 in chunks) return chunks[index8];
     let i = chunks.length;
-    while (i <= index6) {
+    while (i <= index8) {
       chunks[i] = reader.read().then((chunk) => chunk.value);
       i++;
     }
-    return chunks[index6];
+    return chunks[index8];
   }
   async function get_buffer(offset, length) {
     let start_chunk;
@@ -2694,15 +2779,15 @@ async function deserialize_binary_form(request) {
   }
   const file_spans = [];
   const [data, meta] = parse(decoder.decode(data_buffer), {
-    File: ([name, type, size, last_modified, index6]) => {
-      if (typeof name !== "string" || typeof type !== "string" || typeof size !== "number" || typeof last_modified !== "number" || typeof index6 !== "number") {
+    File: ([name, type, size, last_modified, index8]) => {
+      if (typeof name !== "string" || typeof type !== "string" || typeof size !== "number" || typeof last_modified !== "number" || typeof index8 !== "number") {
         throw deserialize_error("invalid file metadata");
       }
-      let offset = file_offsets[index6];
+      let offset = file_offsets[index8];
       if (offset === void 0) {
         throw deserialize_error("duplicate file offset table index");
       }
-      file_offsets[index6] = void 0;
+      file_offsets[index8] = void 0;
       offset += files_start_offset;
       file_spans.push({ offset, size });
       return new Proxy(new LazyFile(name, type, size, last_modified, get_chunk, offset), {
@@ -3403,7 +3488,7 @@ var options = {
     app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="/favicon.png" />\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />\n  <meta name="theme-color" content="#0A0A0C" />\n  <meta name="apple-mobile-web-app-capable" content="yes" />\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n  <title>DocuFill \u2014 AI Document Extraction</title>\n  <style>\n    html, body { background: #0A0A0C; margin: 0; padding: 0; overscroll-behavior: none; }\n  </style>\n  ' + head + '\n</head>\n<body data-sveltekit-preload-data="hover" class="bg-bg-primary">\n  <div style="display: contents">' + body + "</div>\n</body>\n</html>\n",
     error: error2
   },
-  version_hash: "a16y1h"
+  version_hash: "6440hm"
 };
 async function get_hooks() {
   let handle;
@@ -3933,7 +4018,7 @@ function server_data_serializer(event, event_state, options2) {
   let max_nodes = -1;
   const iterator = create_async_iterator();
   const global = get_global_name(options2);
-  function get_replacer(index6) {
+  function get_replacer(index8) {
     return function replacer(thing) {
       if (typeof thing?.then === "function") {
         const id = promise_id++;
@@ -3963,7 +4048,7 @@ function server_data_serializer(event, event_state, options2) {
               str = uneval([, error22], replacer);
             }
             return {
-              index: index6,
+              index: index8,
               str: `${global}.resolve(${id}, ${str.includes("app.decode") ? `(app) => ${str}` : `() => ${str}`})`
             };
           }
@@ -4012,8 +4097,8 @@ function server_data_serializer(event, event_state, options2) {
 `;
       return {
         data: `[${compact(max_nodes > -1 ? strings.slice(0, max_nodes) : strings).join(",")}]`,
-        chunks: promise_id > 1 ? iterator.iterate(({ index: index6, str }) => {
-          if (max_nodes > -1 && index6 >= max_nodes) {
+        chunks: promise_id > 1 ? iterator.iterate(({ index: index8, str }) => {
+          if (max_nodes > -1 && index8 >= max_nodes) {
             return "";
           }
           return open + str + close;
@@ -4890,16 +4975,16 @@ export const route = ${csr_route}; export const params = ${JSON.stringify(params
 }
 function create_css_import(route, url, client) {
   const { errors, layouts, leaf } = route;
-  let css = "";
+  let css3 = "";
   for (const node of [...errors, ...layouts.map((l) => l?.[1]), leaf[1]]) {
     if (typeof node !== "number") continue;
     const node_css = client.css?.[node];
     for (const css_path of node_css ?? []) {
-      css += `'${assets || base}/${css_path}',`;
+      css3 += `'${assets || base}/${css_path}',`;
     }
   }
-  if (!css) return "";
-  return `${create_client_import(client.start, url)}.then(x => x.load_css([${css}]));`;
+  if (!css3) return "";
+  return `${create_client_import(client.start, url)}.then(x => x.load_css([${css3}]));`;
 }
 async function handle_remote_call(event, state, options2, manifest2, id) {
   return record_span({
@@ -5322,8 +5407,8 @@ async function render_response({
   }
   const { client } = manifest2._;
   const modulepreloads = new Set(client?.imports);
-  const stylesheets6 = new Set(client?.stylesheets);
-  const fonts6 = new Set(client?.fonts);
+  const stylesheets8 = new Set(client?.stylesheets);
+  const fonts8 = new Set(client?.fonts);
   const link_headers = /* @__PURE__ */ new Set();
   const inline_styles = /* @__PURE__ */ new Map();
   let rendered;
@@ -5425,14 +5510,14 @@ async function render_response({
         if (options2.async) {
           reset();
         }
-        const { head: head2, html: html2, css, hashes } = (
+        const { head: head2, html: html2, css: css3, hashes } = (
           /** @type {ReturnType<typeof options.root.render>} */
           options2.async ? await rendered2 : rendered2
         );
         if (hashes) {
           csp.add_script_hashes(hashes.script);
         }
-        return { head: head2, html: html2, css, hashes };
+        return { head: head2, html: html2, css: css3, hashes };
       });
     } finally {
       reset();
@@ -5442,15 +5527,15 @@ async function render_response({
   }
   for (const { node } of branch) {
     for (const url of node.imports) modulepreloads.add(url);
-    for (const url of node.stylesheets) stylesheets6.add(url);
-    for (const url of node.fonts) fonts6.add(url);
+    for (const url of node.stylesheets) stylesheets8.add(url);
+    for (const url of node.fonts) fonts8.add(url);
     if (node.inline_styles && !client?.inline) {
-      Object.entries(await node.inline_styles()).forEach(([filename, css]) => {
-        if (typeof css === "string") {
-          inline_styles.set(filename, css);
+      Object.entries(await node.inline_styles()).forEach(([filename, css3]) => {
+        if (typeof css3 === "string") {
+          inline_styles.set(filename, css3);
           return;
         }
-        inline_styles.set(filename, css(`${assets$1}/${app_dir}/immutable/assets`, assets$1));
+        inline_styles.set(filename, css3(`${assets$1}/${app_dir}/immutable/assets`, assets$1));
       });
     }
   }
@@ -5469,7 +5554,7 @@ async function render_response({
     csp.add_style(style);
     head.add_style(style, attributes);
   }
-  for (const dep of stylesheets6) {
+  for (const dep of stylesheets8) {
     const path = prefixed(dep);
     const attributes = ['rel="stylesheet"'];
     if (inline_styles.has(dep)) {
@@ -5481,7 +5566,7 @@ async function render_response({
     }
     head.add_stylesheet(path, attributes);
   }
-  for (const dep of fonts6) {
+  for (const dep of fonts8) {
     const path = prefixed(dep);
     if (resolve_opts.preload({ type: "font", path })) {
       const ext = dep.slice(dep.lastIndexOf(".") + 1);
@@ -6150,11 +6235,11 @@ async function render_page(event, event_state, page2, options2, manifest2, state
           const error22 = await handle_error_and_jsonify(event, event_state, options2, err);
           while (i--) {
             if (page2.errors[i]) {
-              const index6 = (
+              const index8 = (
                 /** @type {number} */
                 page2.errors[i]
               );
-              const node2 = await manifest2._.nodes[index6]();
+              const node2 = await manifest2._.nodes[index8]();
               let j = i;
               while (!branch[j]) j -= 1;
               data_serializer.set_max_nodes(j + 1);
@@ -7388,13 +7473,15 @@ var manifest = (() => {
     assets: /* @__PURE__ */ new Set([]),
     mimeTypes: {},
     _: {
-      client: { start: "_app/immutable/entry/start.Cw-G8XdB.js", app: "_app/immutable/entry/app.CYXsupXf.js", imports: ["_app/immutable/entry/start.Cw-G8XdB.js", "_app/immutable/chunks/5TlF5TVw.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/entry/app.CYXsupXf.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
+      client: { start: "_app/immutable/entry/start.CWezejQU.js", app: "_app/immutable/entry/app.8ASPaABV.js", imports: ["_app/immutable/entry/start.CWezejQU.js", "_app/immutable/chunks/Dpi9_WBl.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CDlB9XO6.js", "_app/immutable/chunks/82OgMF93.js", "_app/immutable/entry/app.8ASPaABV.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CC71i9g6.js", "_app/immutable/chunks/CKdjg3_A.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
       nodes: [
         __memo(() => Promise.resolve().then(() => (init__(), __exports))),
         __memo(() => Promise.resolve().then(() => (init__2(), __exports2))),
         __memo(() => Promise.resolve().then(() => (init__3(), __exports3))),
         __memo(() => Promise.resolve().then(() => (init__4(), __exports4))),
-        __memo(() => Promise.resolve().then(() => (init__5(), __exports5)))
+        __memo(() => Promise.resolve().then(() => (init__5(), __exports5))),
+        __memo(() => Promise.resolve().then(() => (init__6(), __exports6))),
+        __memo(() => Promise.resolve().then(() => (init__7(), __exports7)))
       ],
       remotes: {},
       routes: [
@@ -7413,10 +7500,24 @@ var manifest = (() => {
           endpoint: null
         },
         {
+          id: "/sign-in",
+          pattern: /^\/sign-in\/?$/,
+          params: [],
+          page: { layouts: [0], errors: [1], leaf: 4 },
+          endpoint: null
+        },
+        {
+          id: "/sign-up",
+          pattern: /^\/sign-up\/?$/,
+          params: [],
+          page: { layouts: [0], errors: [1], leaf: 5 },
+          endpoint: null
+        },
+        {
           id: "/upload",
           pattern: /^\/upload\/?$/,
           params: [],
-          page: { layouts: [0], errors: [1], leaf: 4 },
+          page: { layouts: [0], errors: [1], leaf: 6 },
           endpoint: null
         }
       ],

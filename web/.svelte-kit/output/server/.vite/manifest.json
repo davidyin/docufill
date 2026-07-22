@@ -137,7 +137,7 @@
       "_clerk.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.Do-gLO76.css"
+      "_app/immutable/assets/_layout.DSljacef.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -163,6 +163,33 @@
       "_clerk.js",
       "_index2.js",
       "_Spinner.js"
+    ]
+  },
+  "src/routes/sign-in/+page.svelte": {
+    "file": "entries/pages/sign-in/_page.svelte.js",
+    "name": "entries/pages/sign-in/_page.svelte",
+    "src": "src/routes/sign-in/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_exports.js",
+      "_utils2.js",
+      "_state.svelte.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DpTW3rfD.css"
+    ]
+  },
+  "src/routes/sign-up/+page.svelte": {
+    "file": "entries/pages/sign-up/_page.svelte.js",
+    "name": "entries/pages/sign-up/_page.svelte",
+    "src": "src/routes/sign-up/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DpTW3rfD.css"
     ]
   },
   "src/routes/upload/+page.svelte": {

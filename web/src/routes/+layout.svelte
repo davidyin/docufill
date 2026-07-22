@@ -66,21 +66,16 @@
         <p class="text-text-tertiary text-sm mt-2">AI-Powered Document Extraction</p>
       </div>
 
-      <!-- Sign In Button — triggers Clerk -->
-      <button
-        on:click={async () => {
-          const clerk = await initClerk();
-          if (clerk) {
-            clerk.openSignIn();
-          }
-        }}
-        class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow"
+  <!-- Sign In Button -->
+      <a
+        href="/sign-in"
+        class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow inline-block text-center"
       >
         Sign In to Continue
-      </button>
+      </a>
 
       <p class="text-text-tertiary text-xs text-center mt-4">
-        By signing in, you agree to our Terms of Service and Privacy Policy
+        Don't have an account? <a href="/sign-up" class="text-docufill-orange">Sign up</a>
       </p>
     </div>
   </div>

@@ -10,13 +10,15 @@ return {
 	assets: new Set([]),
 	mimeTypes: {},
 	_: {
-		client: {start:"_app/immutable/entry/start.Cw-G8XdB.js",app:"_app/immutable/entry/app.CYXsupXf.js",imports:["_app/immutable/entry/start.Cw-G8XdB.js","_app/immutable/chunks/5TlF5TVw.js","_app/immutable/chunks/2OFpxDF0.js","_app/immutable/chunks/p7EzOC4P.js","_app/immutable/entry/app.CYXsupXf.js","_app/immutable/chunks/C1FmrZbK.js","_app/immutable/chunks/2OFpxDF0.js","_app/immutable/chunks/CVMX8oTx.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.CWezejQU.js",app:"_app/immutable/entry/app.8ASPaABV.js",imports:["_app/immutable/entry/start.CWezejQU.js","_app/immutable/chunks/Dpi9_WBl.js","_app/immutable/chunks/CC71i9g6.js","_app/immutable/chunks/CDlB9XO6.js","_app/immutable/chunks/82OgMF93.js","_app/immutable/entry/app.8ASPaABV.js","_app/immutable/chunks/C1FmrZbK.js","_app/immutable/chunks/CC71i9g6.js","_app/immutable/chunks/CKdjg3_A.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
 			__memo(() => import('./nodes/2.js')),
 			__memo(() => import('./nodes/3.js')),
-			__memo(() => import('./nodes/4.js'))
+			__memo(() => import('./nodes/4.js')),
+			__memo(() => import('./nodes/5.js')),
+			__memo(() => import('./nodes/6.js'))
 		],
 		remotes: {
 			
@@ -37,10 +39,24 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/sign-in",
+				pattern: /^\/sign-in\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				endpoint: null
+			},
+			{
+				id: "/sign-up",
+				pattern: /^\/sign-up\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 5 },
+				endpoint: null
+			},
+			{
 				id: "/upload",
 				pattern: /^\/upload\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				page: { layouts: [0,], errors: [1,], leaf: 6 },
 				endpoint: null
 			}
 		],
