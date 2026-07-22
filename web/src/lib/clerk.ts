@@ -22,12 +22,12 @@ export const clerkLoaded = writable(false);
 export const isSignedIn = writable(false);
 export const clerkUser = writable<any>(null);
 
-// Derived: ready for API calls (either Clerk loaded or dev mode)
+// Derived: ready for API calls (Clerk loaded, regardless of sign-in state)
 export const authReady: Readable<boolean> = derived(
-  [clerkLoaded, isSignedIn],
-  ([$loaded, $signedIn]) => {
+  clerkLoaded,
+  ($loaded) => {
     if (!isClerkEnabled) return true; // Dev mode — always ready
-    return $loaded && $signedIn;
+    return $loaded;
   }
 );
 
