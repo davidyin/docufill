@@ -58,6 +58,12 @@
     editableFields.resetField(name);
   }
 
+  function onInput(fieldName: string) {
+    return function(e: Event) {
+      handleFieldChange(fieldName, (e.target as HTMLInputElement).value);
+    };
+  }
+
   function toggleEditMode() {
     editMode = !editMode;
   }
@@ -175,12 +181,7 @@
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-display font-semibold">Extracted Fields</h2>
             <button
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border touchable transition-all"
-              class:bg-docufill-orange/10={editMode}
-              class:text-docufill-orange={editMode}
-              class:border-docufill-orange/30={editMode}
-              class:text-text-secondary={!editMode}
-              class:border-white/[0.08]={!editMode}
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border touchable transition-all {editMode ? 'bg-docufill-orange/10 text-docufill-orange border-docufill-orange/30' : 'text-text-secondary border-white/[0.08]'}"
               on:click={toggleEditMode}
             >
               {#if editMode}
@@ -194,7 +195,7 @@
           <div class="space-y-2">
             {#each $editableFields as field (field.name)}
               <div transition:fly={{ y: 10, duration: 200 }}>
-                <div class="group p-4 rounded-xl border transition-all duration-200 {field.isEdited ? 'bg-docufill-orange/5 border-docufill-orange/20' : 'bg-bg-elevated border-white/[0.06]'}">
+                <div class="group p-4 rounded-xl border transition-all duration-200 {field.isEdited ? 'bg-docufill-orange/5 border-docufill-orange/20' : 'bg-bg-elevated border-white/10'}">
                   <div class="flex items-start justify-between gap-3 mb-2">
                     <div class="flex items-center gap-2">
                       <label class="text-xs font-medium text-text-tertiary uppercase tracking-wider">{field.label}</label>
@@ -212,8 +213,8 @@
                       <input
                         type="text"
                         value={field.value}
-                        on:input={(e) => handleFieldChange(field.name, (e.target as HTMLInputElement).value)}
-                        class="flex-1 bg-bg-card border border-docufill-orange/30 rounded-lg px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-docufill-orange/50"
+                        on:input={onInput(field.name)}
+                        class="flex-1 bg-bg-card border border-orange-500 rounded-lg px-3 py-2 text-sm text-text-primary"
                       />
                       {#if field.isEdited}
                         <button

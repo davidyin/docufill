@@ -231,13 +231,10 @@
             <div class="flex flex-wrap gap-2">
               {#each docTypes as type}
                 <button
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all touchable"
-                  class:bg-docufill-orange/10={selectedDocType === type.id}
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all touchable {selectedDocType === type.id ? 'bg-docufill-orange/10' : ''} {selectedDocType === type.id ? 'border-docufill-orange/30' : ''} {selectedDocType !== type.id ? 'border-white/[0.08]' : ''}"
                   class:text-docufill-orange={selectedDocType === type.id}
-                  class:border-docufill-orange/30={selectedDocType === type.id}
                   class:bg-transparent={selectedDocType !== type.id}
                   class:text-text-secondary={selectedDocType !== type.id}
-                  class:border-white/[0.08]={selectedDocType !== type.id}
                   on:click={() => selectedDocType = selectedDocType === type.id ? undefined : type.id}
                 >
                   <span>{type.icon}</span>

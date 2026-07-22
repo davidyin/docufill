@@ -87,9 +87,8 @@
   <!-- Dropzone area -->
   <button
     type="button"
-    class="w-full min-h-[200px] rounded-2xl border-2 border-dashed transition-all duration-200 flex flex-col items-center justify-center gap-4 p-8 touchable"
+    class="w-full min-h-[200px] rounded-2xl border-2 border-dashed transition-all duration-200 flex flex-col items-center justify-center gap-4 p-8 touchable {isDragging ? 'bg-docufill-orange/5' : ''}"
     class:border-docufill-orange={isDragging}
-    class:bg-docufill-orange/5={isDragging}
     class:border-border-default={!isDragging}
     class:bg-bg-card={!isDragging}
     class:hover:border-border-active={!disabled}

@@ -51,11 +51,9 @@
         {#each navItems as item}
           <a
             href={item.href}
-            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors touchable"
-            class:bg-docufill-orange/10={isActive(item.href)}
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors touchable {isActive(item.href) ? 'bg-docufill-orange/10' : ''} {!isActive(item.href) ? 'hover:bg-white/[0.04]' : ''}"
             class:text-docufill-orange={isActive(item.href)}
             class:text-text-secondary={!isActive(item.href)}
-            class:hover:bg-white/[0.04]={!isActive(item.href)}
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d={item.icon}/>

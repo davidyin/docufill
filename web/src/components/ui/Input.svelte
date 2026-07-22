@@ -21,9 +21,7 @@
     {disabled}
     {autocomplete}
     bind:value
-    class="w-full bg-bg-elevated rounded-xl px-4 py-3 text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-docufill-orange/50 border transition-colors"
-    class:border-white/[0.06]={!error}
-    class:border-docufill-red/50={error}
+    class="w-full bg-bg-elevated rounded-xl px-4 py-3 text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:ring-2 focus:ring-docufill-orange/50 border transition-colors {!error ? 'border-white/[0.06]' : ''} {error ? 'border-docufill-red/50' : ''}"
     class:bg-bg-elevated={!disabled}
     class:opacity-50={disabled}
   />

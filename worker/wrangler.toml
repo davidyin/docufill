@@ -15,13 +15,9 @@ binding = "DOCUMENTS"
 bucket_name = "docufill-documents"
 
 [vars]
-ENVIRONMENT = "development"
+ENVIRONMENT = "production"
 MAX_FILE_SIZE_MB = "10"
 GEMINI_MODEL = "gemini-2.5-flash"
-# Clerk Auth — set via: wrangler secret put CLERK_JWT_ISSUER
-CLERK_JWT_ISSUER = ""
+# Clerk JWT Issuer (derived from publishable key)
+CLERK_JWT_ISSUER = "https://cute-phoenix-45.clerk.accounts.dev"
 CLERK_JWT_PUBLIC_KEY = ""
-
-[env.production]
-[env.production.vars]
-ENVIRONMENT = "production"
