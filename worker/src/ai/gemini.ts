@@ -63,7 +63,7 @@ export async function extractFromImage(
     contents: [{ role: 'user', parts }],
     generation_config: {
       temperature: 0.1,
-      max_output_tokens: 4096,
+      max_output_tokens: 8192,
       ...(schema ? { response_mime_type: 'application/json', response_schema: schema } : {}),
     },
   };

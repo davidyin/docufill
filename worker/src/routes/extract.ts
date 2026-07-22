@@ -68,11 +68,39 @@ export async function extractDocument(request: Request, env: Env, docId: string)
         if (cleaned[i] === '}') depth--;
         if (depth === 0) { lastBrace = i; break; }
       }
-      if (lastBrace === -1) throw new Error('Unclosed JSON object in response');
+      if (lastBrace === -1) {
+        // JSON was truncated — try to repair by closing open brackets
+        console.warn('[Extract] JSON truncated, attempting repair');
+        let repaired = cleaned.slice(firstBrace);
+        let openBraces = 0;
+        let inString = false;
+        let escape = false;
+        for (const ch of repaired) {
+          if (escape) { escape = false; continue; }
+          if (ch === '\\' && inString) { escape = true; continue; }
+          if (ch === '"') { inString = !inString; continue; }
+          if (!inString) {
+            if (ch === '{' || ch === '[') openBraces++;
+            if (ch === '}' || ch === ']') openBraces--;
+          }
+        }
+        // Close any open strings, then brackets
+        if (inString) repaired += '"';
+        for (let i = 0; i < openBraces; i++) repaired += '}';
 
-      const jsonStr = cleaned.slice(firstBrace, lastBrace + 1);
+        try {
+          parsed = JSON.parse(repaired);
+          console.log('[Extract] Repaired truncated JSON successfully');
+        } catch {
+          throw new Error(`Unclosed JSON object in response (repair failed): ${repaired.slice(-100)}`);
+        }
+      }
+
+      const jsonStr = lastBrace === -1 ? cleaned.slice(firstBrace) : cleaned.slice(firstBrace, lastBrace + 1);
       console.log('[Extract] Parsing JSON, length:', jsonStr.length);
-      parsed = JSON.parse(jsonStr);
+      if (lastBrace !== -1) {
+        parsed = JSON.parse(jsonStr);
+      }
     } catch (parseErr: any) {
       const errMsg = `Failed to parse AI response: ${text.slice(0, 200)}`;
       await env.DB.prepare(
