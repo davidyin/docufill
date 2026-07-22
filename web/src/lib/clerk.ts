@@ -42,7 +42,7 @@ export async function initClerk(): Promise<any> {
 
   initPromise = (async () => {
     try {
-      const { default: Clerk } = await import('@clerk/clerk-js');
+      const { Clerk } = await import('@clerk/clerk-js');
       const clerk = new Clerk(CLERK_PUBLISHABLE_KEY);
       await clerk.load();
 

@@ -68,11 +68,11 @@
 
       <!-- Sign In Button — triggers Clerk -->
       <button
-        on:click={() => {
-          import('@clerk/clerk-js').then(({ default: Clerk }) => {
-            const clerk = new Clerk(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
-            clerk.load().then(() => clerk.openSignIn());
-          });
+        on:click={async () => {
+          const clerk = await initClerk();
+          if (clerk) {
+            clerk.openSignIn();
+          }
         }}
         class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow"
       >

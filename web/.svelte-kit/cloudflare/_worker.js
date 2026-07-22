@@ -943,7 +943,7 @@ var init_layout_svelte = __esm({
       });
       $$unsubscribe_authReady();
       $$unsubscribe_isSignedIn();
-      return `${$$result.head += `<!-- HEAD_svelte-6auexh_START -->${$$result.title = `<title>DocuFill \u2014 AI Document Extraction</title>`, ""}<!-- HEAD_svelte-6auexh_END -->`, ""} ${!$authReady ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary"><div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-5 shadow-lg shadow-docufill-orange/20" data-svelte-h="svelte-kfkad8"><span class="text-2xl">\u{1F4C4}</span></div> ${validate_component(Spinner, "Spinner").$$render($$result, { size: "md" }, {}, {})} <span class="text-text-tertiary text-sm mt-4" data-svelte-h="svelte-tbft8b">Loading DocuFill...</span></div>` : `${!$isSignedIn ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-sm"> <div class="text-center mb-8" data-svelte-h="svelte-10udcpm"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">AI-Powered Document Extraction</p></div>  <button class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow" data-svelte-h="svelte-185nvqa">Sign In to Continue</button> <p class="text-text-tertiary text-xs text-center mt-4" data-svelte-h="svelte-pm51hq">By signing in, you agree to our Terms of Service and Privacy Policy</p></div></div>` : ` <div class="flex overflow-hidden" style="height: var(--app-height);"> ${``} <div class="flex-1 flex flex-col overflow-hidden"> ${validate_component(TopBar, "TopBar").$$render($$result, {}, {}, {})}  <main class="flex-1 overflow-hidden">${slots.default ? slots.default({}) : ``}</main>  ${`<div class="safe-bottom">${validate_component(Sidebar, "Sidebar").$$render($$result, { isDesktop }, {}, {})}</div>`}</div></div>`}`}`;
+      return `${$$result.head += `<!-- HEAD_svelte-6auexh_START -->${$$result.title = `<title>DocuFill \u2014 AI Document Extraction</title>`, ""}<!-- HEAD_svelte-6auexh_END -->`, ""} ${!$authReady ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary"><div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-5 shadow-lg shadow-docufill-orange/20" data-svelte-h="svelte-kfkad8"><span class="text-2xl">\u{1F4C4}</span></div> ${validate_component(Spinner, "Spinner").$$render($$result, { size: "md" }, {}, {})} <span class="text-text-tertiary text-sm mt-4" data-svelte-h="svelte-tbft8b">Loading DocuFill...</span></div>` : `${!$isSignedIn ? ` <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-sm"> <div class="text-center mb-8" data-svelte-h="svelte-10udcpm"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">AI-Powered Document Extraction</p></div>  <button class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow" data-svelte-h="svelte-1ex272u">Sign In to Continue</button> <p class="text-text-tertiary text-xs text-center mt-4" data-svelte-h="svelte-pm51hq">By signing in, you agree to our Terms of Service and Privacy Policy</p></div></div>` : ` <div class="flex overflow-hidden" style="height: var(--app-height);"> ${``} <div class="flex-1 flex flex-col overflow-hidden"> ${validate_component(TopBar, "TopBar").$$render($$result, {}, {}, {})}  <main class="flex-1 overflow-hidden">${slots.default ? slots.default({}) : ``}</main>  ${`<div class="safe-bottom">${validate_component(Sidebar, "Sidebar").$$render($$result, { isDesktop }, {}, {})}</div>`}</div></div>`}`}`;
     });
   }
 });
@@ -962,7 +962,7 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     index = 0;
     component = async () => component_cache ??= (await Promise.resolve().then(() => (init_layout_svelte(), layout_svelte_exports))).default;
-    imports = ["_app/immutable/nodes/0.BrB9m19H.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/DeldjPd1.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/sClPHbs7.js", "_app/immutable/chunks/KMg9URNE.js"];
+    imports = ["_app/immutable/nodes/0.B_9GGm7F.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/Ccr3kB88.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/B65PyCba.js", "_app/immutable/chunks/BQiiOpUb.js"];
     stylesheets = ["_app/immutable/assets/0.BBHF7KAA.css"];
     fonts = [];
   }
@@ -1001,7 +1001,7 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     index2 = 1;
     component2 = async () => component_cache2 ??= (await Promise.resolve().then(() => (init_error_svelte(), error_svelte_exports))).default;
-    imports2 = ["_app/immutable/nodes/1.DCpiw7ds.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/sClPHbs7.js", "_app/immutable/chunks/KMg9URNE.js", "_app/immutable/chunks/p7EzOC4P.js"];
+    imports2 = ["_app/immutable/nodes/1.CS5mYa13.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/B65PyCba.js", "_app/immutable/chunks/BQiiOpUb.js", "_app/immutable/chunks/p7EzOC4P.js"];
     stylesheets2 = [];
     fonts2 = [];
   }
@@ -1165,7 +1165,7 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     index3 = 2;
     component3 = async () => component_cache3 ??= (await Promise.resolve().then(() => (init_page_svelte(), page_svelte_exports))).default;
-    imports3 = ["_app/immutable/nodes/2.C9n7G5Vr.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/DeldjPd1.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/BOBG272G.js"];
+    imports3 = ["_app/immutable/nodes/2.Cw6kP-4T.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/Ccr3kB88.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/Dpp0ua6M.js"];
     stylesheets3 = [];
     fonts3 = [];
   }
@@ -1211,7 +1211,7 @@ var init__4 = __esm({
   ".svelte-kit/output/server/nodes/3.js"() {
     index4 = 3;
     component4 = async () => component_cache4 ??= (await Promise.resolve().then(() => (init_page_svelte2(), page_svelte_exports2))).default;
-    imports4 = ["_app/immutable/nodes/3.CBh_v9wz.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/DeldjPd1.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/sClPHbs7.js", "_app/immutable/chunks/KMg9URNE.js", "_app/immutable/chunks/BOBG272G.js", "_app/immutable/chunks/qX2YeMjJ.js"];
+    imports4 = ["_app/immutable/nodes/3.CuuA3KP1.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/Ccr3kB88.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/B65PyCba.js", "_app/immutable/chunks/BQiiOpUb.js", "_app/immutable/chunks/Dpp0ua6M.js", "_app/immutable/chunks/qX2YeMjJ.js"];
     stylesheets4 = [];
     fonts4 = [];
   }
@@ -1312,7 +1312,7 @@ var init__5 = __esm({
   ".svelte-kit/output/server/nodes/4.js"() {
     index5 = 4;
     component5 = async () => component_cache5 ??= (await Promise.resolve().then(() => (init_page_svelte3(), page_svelte_exports3))).default;
-    imports5 = ["_app/immutable/nodes/4.ISVIggAR.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/DeldjPd1.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/KMg9URNE.js", "_app/immutable/chunks/BOBG272G.js", "_app/immutable/chunks/qX2YeMjJ.js"];
+    imports5 = ["_app/immutable/nodes/4.DGFPQ_7v.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js", "_app/immutable/chunks/Ccr3kB88.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/chunks/BQiiOpUb.js", "_app/immutable/chunks/Dpp0ua6M.js", "_app/immutable/chunks/qX2YeMjJ.js"];
     stylesheets5 = [];
     fonts5 = [];
   }
@@ -3403,7 +3403,7 @@ var options = {
     app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="/favicon.png" />\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />\n  <meta name="theme-color" content="#0A0A0C" />\n  <meta name="apple-mobile-web-app-capable" content="yes" />\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n  <title>DocuFill \u2014 AI Document Extraction</title>\n  <style>\n    html, body { background: #0A0A0C; margin: 0; padding: 0; overscroll-behavior: none; }\n  </style>\n  ' + head + '\n</head>\n<body data-sveltekit-preload-data="hover" class="bg-bg-primary">\n  <div style="display: contents">' + body + "</div>\n</body>\n</html>\n",
     error: error2
   },
-  version_hash: "1qrqwhd"
+  version_hash: "kt5a7"
 };
 async function get_hooks() {
   let handle;
@@ -7388,7 +7388,7 @@ var manifest = (() => {
     assets: /* @__PURE__ */ new Set([]),
     mimeTypes: {},
     _: {
-      client: { start: "_app/immutable/entry/start.tCjK9C80.js", app: "_app/immutable/entry/app.WA-U7h88.js", imports: ["_app/immutable/entry/start.tCjK9C80.js", "_app/immutable/chunks/KMg9URNE.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/entry/app.WA-U7h88.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
+      client: { start: "_app/immutable/entry/start.D7JxzGhd.js", app: "_app/immutable/entry/app.Dtp2pBIj.js", imports: ["_app/immutable/entry/start.D7JxzGhd.js", "_app/immutable/chunks/BQiiOpUb.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/p7EzOC4P.js", "_app/immutable/entry/app.Dtp2pBIj.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/2OFpxDF0.js", "_app/immutable/chunks/CVMX8oTx.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
       nodes: [
         __memo(() => Promise.resolve().then(() => (init__(), __exports))),
         __memo(() => Promise.resolve().then(() => (init__2(), __exports2))),
