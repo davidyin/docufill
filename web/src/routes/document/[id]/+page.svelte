@@ -242,31 +242,20 @@
                   </div>
 
                   {#if isLineItems(field.name)}
-                    <!-- Line Items Table -->
-                    <div class="overflow-x-auto">
-                      <table class="w-full text-xs">
-                        <thead>
-                          <tr class="text-text-tertiary uppercase tracking-wider">
-                            <th class="text-left py-1 pr-2">#</th>
-                            <th class="text-left py-1 pr-2">Description</th>
-                            <th class="text-right py-1 pr-2">Qty</th>
-                            <th class="text-right py-1 pr-2">Price</th>
-                            <th class="text-right py-1">Total</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {#each parseLineItems(field.value) as item, i}
-                            <tr class="border-t border-white/5">
-                              <td class="py-1 pr-2 text-text-tertiary">{i + 1}</td>
-                              <td class="py-1 pr-2 text-text-primary">{item.description}</td>
-                              <td class="py-1 pr-2 text-text-secondary text-right">{item.quantity}</td>
-                              <td class="py-1 pr-2 text-text-secondary text-right num">{formatPrice(item.unit_price)}</td>
-                              <td class="py-1 text-text-primary text-right num">{formatPrice(item.total)}</td>
-                            </tr>
-                          {/each}
-                        </tbody>
-                      </table>
-                    </div>
+                    <!-- Line Items as clean receipt list -->
+                    <ul class="space-y-0 mt-1">
+                      {#each parseLineItems(field.value) as item, i}
+                        <li class="flex items-baseline justify-between gap-3 py-2 border-b border-white/[0.06] last:border-b-0">
+                          <div class="flex items-baseline gap-2 min-w-0">
+                            <span class="text-sm text-text-primary truncate">{item.description}</span>
+                            {#if item.quantity > 1}
+                              <span class="text-xs text-text-tertiary shrink-0">×{item.quantity}</span>
+                            {/if}
+                          </div>
+                          <span class="text-sm text-text-primary font-medium shrink-0 num">{formatPrice(item.total)}</span>
+                        </li>
+                      {/each}
+                    </ul>
                   {:else if editMode}
                     <div class="flex items-center gap-2">
                       <input
