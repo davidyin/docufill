@@ -12,6 +12,61 @@
   let loading = true;
   let exporting = false;
   let recentDocs: Document[] = [];
+  let statsLoaded = false;
+  let totalSpending = 0;
+  let monthSpending = 0;
+  let avgConfidence = 0;
+  let docTypeCounts: Record<string, number> = {};
+
+  async function loadStats() {
+    const extracted = recentDocs.filter(d => d.status === 'extracted');
+    if (extracted.length === 0) {
+      statsLoaded = true;
+      return;
+    }
+    const details = await Promise.all(
+      extracted.map(d => docufillApi.getDocument(d.id).catch(() => null))
+    );
+
+    const now = new Date();
+    const thisMonth = now.getMonth();
+    const thisYear = now.getFullYear();
+
+    let total = 0;
+    let monthTotal = 0;
+    let confSum = 0;
+    let confCount = 0;
+    const typeCounts: Record<string, number> = {};
+
+    details.forEach(doc => {
+      if (!doc) return;
+      const docType = doc.document_type || 'unknown';
+      typeCounts[docType] = (typeCounts[docType] || 0) + 1;
+
+      doc.extracted_fields?.forEach(f => {
+        if (f.field_name === 'total_amount' && f.field_value) {
+          const amount = parseFloat(f.field_value);
+          if (!isNaN(amount)) {
+            total += amount;
+            const docDate = new Date(doc.created_at);
+            if (docDate.getMonth() === thisMonth && docDate.getFullYear() === thisYear) {
+              monthTotal += amount;
+            }
+          }
+        }
+        if (f.confidence !== null) {
+          confSum += f.confidence;
+          confCount++;
+        }
+      });
+    });
+
+    totalSpending = total;
+    monthSpending = monthTotal;
+    avgConfidence = confCount > 0 ? confSum / confCount : 0;
+    docTypeCounts = typeCounts;
+    statsLoaded = true;
+  }
 
   async function exportAllCsv() {
     if (exporting) return;
@@ -75,6 +130,7 @@
     try {
       recentDocs = await docufillApi.listDocuments();
       documents.set(recentDocs);
+      loadStats();
     } catch (err) {
       console.error('Failed to load documents:', err);
     }
@@ -136,6 +192,59 @@
         </div>
       </div>
     </div>
+
+    <!-- Analytics Stats -->
+    {#if statsLoaded && recentDocs.some(d => d.status === 'extracted')}
+      <div class="mb-8" transition:fly={{ y: 10, duration: 200 }}>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <Card variant="default" padding="md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-docufill-orange/10 flex items-center justify-center text-lg">📄</div>
+              <div>
+                <p class="text-xs text-text-tertiary">Documents</p>
+                <p class="text-lg font-display font-bold text-text-primary num">{recentDocs.filter(d => d.status === 'extracted').length}</p>
+              </div>
+            </div>
+          </Card>
+          <Card variant="default" padding="md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-docufill-orange/10 flex items-center justify-center text-lg">💰</div>
+              <div>
+                <p class="text-xs text-text-tertiary">Total Spent</p>
+                <p class="text-lg font-display font-bold text-text-primary num">${totalSpending.toFixed(2)}</p>
+              </div>
+            </div>
+          </Card>
+          <Card variant="default" padding="md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-docufill-yellow/10 flex items-center justify-center text-lg">📅</div>
+              <div>
+                <p class="text-xs text-text-tertiary">This Month</p>
+                <p class="text-lg font-display font-bold text-text-primary num">${monthSpending.toFixed(2)}</p>
+              </div>
+            </div>
+          </Card>
+          <Card variant="default" padding="md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-confidence-high/10 flex items-center justify-center text-lg">🎯</div>
+              <div>
+                <p class="text-xs text-text-tertiary">Avg Confidence</p>
+                <p class="text-lg font-display font-bold text-text-primary num">{Math.round(avgConfidence * 100)}%</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+        {#if Object.keys(docTypeCounts).length > 1}
+          <div class="flex flex-wrap gap-2 mt-3">
+            {#each Object.entries(docTypeCounts) as [type, count]}
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-bg-elevated border border-white/[0.08] text-text-secondary">
+                {getTypeEmoji(type)} {type} <span class="text-text-tertiary">×{count}</span>
+              </span>
+            {/each}
+          </div>
+        {/if}
+      </div>
+    {/if}
 
     <!-- Recent Documents -->
     <div class="mb-6">

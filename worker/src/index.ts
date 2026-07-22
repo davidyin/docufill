@@ -5,7 +5,7 @@
 
 import type { Env } from './types';
 import { handleOptions, addCorsHeaders } from './middleware/cors';
-import { uploadDocument, listUserDocuments, getDocumentById } from './routes/documents';
+import { uploadDocument, listUserDocuments, getDocumentById, getDocumentImage } from './routes/documents';
 import { extractDocument } from './routes/extract';
 import { getFormTemplates, getFormTemplate } from './db/queries';
 
@@ -90,6 +90,12 @@ async function route(request: Request, env: Env): Promise<Response> {
   const extractMatch = path.match(/^\/documents\/([a-zA-Z0-9_-]+)\/extract$/);
   if (extractMatch && method === 'POST') {
     return extractDocument(request, env, extractMatch[1]);
+  }
+
+  // Get document image: GET /documents/:id/image
+  const imgMatch = path.match(/^\/documents\/([a-zA-Z0-9_-]+)\/image$/);
+  if (imgMatch && method === 'GET') {
+    return getDocumentImage(request, env, imgMatch[1]);
   }
 
   // Get document: GET /documents/:id

@@ -967,8 +967,8 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     index = 0;
     component = async () => component_cache ??= (await Promise.resolve().then(() => (init_layout_svelte(), layout_svelte_exports))).default;
-    imports = ["_app/immutable/nodes/0.DH5hEbWA.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js", "_app/immutable/chunks/1Yy1bKQw.js", "_app/immutable/chunks/SgPAS0tY.js", "_app/immutable/chunks/CdYktaO_.js", "_app/immutable/chunks/oSOEQOCl.js", "_app/immutable/chunks/B3p9Iuz9.js", "_app/immutable/chunks/C1FmrZbK.js"];
-    stylesheets = ["_app/immutable/assets/0.w9mmKTsH.css"];
+    imports = ["_app/immutable/nodes/0.CDXvrhOV.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js", "_app/immutable/chunks/BU910KNw.js", "_app/immutable/chunks/DBdziW9K.js", "_app/immutable/chunks/DUyIgem0.js", "_app/immutable/chunks/BUK2XHYV.js", "_app/immutable/chunks/C6NGOXef.js", "_app/immutable/chunks/C1FmrZbK.js"];
+    stylesheets = ["_app/immutable/assets/0.DXufRJNR.css"];
     fonts = [];
   }
 });
@@ -1006,7 +1006,7 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     index2 = 1;
     component2 = async () => component_cache2 ??= (await Promise.resolve().then(() => (init_error_svelte(), error_svelte_exports))).default;
-    imports2 = ["_app/immutable/nodes/1.DtKLzZu2.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js", "_app/immutable/chunks/1Yy1bKQw.js", "_app/immutable/chunks/SgPAS0tY.js", "_app/immutable/chunks/CdYktaO_.js", "_app/immutable/chunks/oSOEQOCl.js"];
+    imports2 = ["_app/immutable/nodes/1.Dm0-tniY.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js", "_app/immutable/chunks/BU910KNw.js", "_app/immutable/chunks/DBdziW9K.js", "_app/immutable/chunks/DUyIgem0.js", "_app/immutable/chunks/BUK2XHYV.js"];
     stylesheets2 = [];
     fonts2 = [];
   }
@@ -1139,7 +1139,7 @@ var init_page_svelte = __esm({
       let recentDocs = [];
       return `<div class="h-full overflow-y-auto scroll-container"><div class="max-w-4xl mx-auto p-4 lg:p-6"> <div class="mb-8 animate-fade-in" data-svelte-h="svelte-165helt"><div class="glass-strong p-6 lg:p-8 relative overflow-hidden"> <div class="absolute -top-20 -right-20 w-60 h-60 bg-docufill-orange/10 rounded-full blur-3xl"></div> <div class="relative"><h1 class="text-2xl lg:text-3xl font-display font-bold mb-2">Hi there \u{1F44B}</h1> <p class="text-text-secondary text-sm lg:text-base mb-5 max-w-lg">Upload any document \u2014 receipt, invoice, tax slip \u2014 and let AI extract the key fields instantly.</p> <div class="flex flex-wrap gap-3"><a href="/upload" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold text-sm rounded-xl touchable shadow-lg shadow-docufill-orange/20"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
               Upload Document</a> <a href="/upload" class="inline-flex items-center gap-2 px-5 py-2.5 bg-bg-elevated border border-white/[0.08] text-text-primary font-medium text-sm rounded-xl touchable"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"></path></svg>
-              Scan with Camera</a></div></div></div></div>  <div class="mb-6"><div class="flex items-center justify-between mb-4"><h2 class="text-lg font-display font-semibold" data-svelte-h="svelte-39mcd8">Recent Documents</h2> ${recentDocs.length > 0 ? `<span class="text-xs text-text-tertiary">${escape(recentDocs.length)} total</span>` : ``}</div> ${`<div class="flex flex-col items-center justify-center py-16 gap-4">${validate_component(Spinner, "Spinner").$$render($$result, { size: "lg" }, {}, {})} <span class="text-text-tertiary text-sm" data-svelte-h="svelte-xz9j0l">Loading documents...</span></div>`}</div>  <div class="mb-8"><h2 class="text-lg font-display font-semibold mb-4" data-svelte-h="svelte-1pldl78">How it works</h2> <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">${validate_component(Card, "Card").$$render($$result, { padding: "lg", variant: "default" }, {}, {
+              Scan with Camera</a></div></div></div></div>  <div class="mb-6"><div class="flex items-center justify-between mb-4"><h2 class="text-lg font-display font-semibold" data-svelte-h="svelte-39mcd8">Recent Documents</h2> <div class="flex items-center gap-2">${recentDocs.some((d) => d.status === "extracted") ? `<button class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border border-white/[0.08] text-text-secondary hover:border-docufill-orange/30 hover:text-docufill-orange transition-all touchable" ${""}>${`<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg>`} ${escape("Export All")}</button>` : ``} ${recentDocs.length > 0 ? `<span class="text-xs text-text-tertiary">${escape(recentDocs.length)} total</span>` : ``}</div></div> ${`<div class="flex flex-col items-center justify-center py-16 gap-4">${validate_component(Spinner, "Spinner").$$render($$result, { size: "lg" }, {}, {})} <span class="text-text-tertiary text-sm" data-svelte-h="svelte-xz9j0l">Loading documents...</span></div>`}</div>  <div class="mb-8"><h2 class="text-lg font-display font-semibold mb-4" data-svelte-h="svelte-1pldl78">How it works</h2> <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">${validate_component(Card, "Card").$$render($$result, { padding: "lg", variant: "default" }, {}, {
         default: () => {
           return `<div class="text-2xl mb-3" data-svelte-h="svelte-1e1mtkz">\u{1F4E4}</div> <h3 class="font-medium text-sm text-text-primary mb-1" data-svelte-h="svelte-8swxj3">1. Upload</h3> <p class="text-xs text-text-tertiary leading-relaxed" data-svelte-h="svelte-1yzufrw">Snap a photo or upload any document \u2014 receipt, invoice, tax slip</p>`;
         }
@@ -1170,7 +1170,7 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     index3 = 2;
     component3 = async () => component_cache3 ??= (await Promise.resolve().then(() => (init_page_svelte(), page_svelte_exports))).default;
-    imports3 = ["_app/immutable/nodes/2.DLsuFb2y.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js", "_app/immutable/chunks/B3p9Iuz9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oSOEQOCl.js", "_app/immutable/chunks/BNlXaqFG.js"];
+    imports3 = ["_app/immutable/nodes/2.BsZayQ0v.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js", "_app/immutable/chunks/C6NGOXef.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/BUK2XHYV.js", "_app/immutable/chunks/B0O8tYtR.js"];
     stylesheets3 = [];
     fonts3 = [];
   }
@@ -1216,7 +1216,7 @@ var init__4 = __esm({
   ".svelte-kit/output/server/nodes/3.js"() {
     index4 = 3;
     component4 = async () => component_cache4 ??= (await Promise.resolve().then(() => (init_page_svelte2(), page_svelte_exports2))).default;
-    imports4 = ["_app/immutable/nodes/3.CzWuFYBs.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js", "_app/immutable/chunks/B3p9Iuz9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oSOEQOCl.js", "_app/immutable/chunks/1Yy1bKQw.js", "_app/immutable/chunks/SgPAS0tY.js", "_app/immutable/chunks/CdYktaO_.js", "_app/immutable/chunks/BNlXaqFG.js", "_app/immutable/chunks/2chMmzDs.js"];
+    imports4 = ["_app/immutable/nodes/3.s9F2AT3j.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js", "_app/immutable/chunks/C6NGOXef.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/BUK2XHYV.js", "_app/immutable/chunks/BU910KNw.js", "_app/immutable/chunks/DBdziW9K.js", "_app/immutable/chunks/DUyIgem0.js", "_app/immutable/chunks/B0O8tYtR.js", "_app/immutable/chunks/xwueFKOo.js"];
     stylesheets4 = [];
     fonts4 = [];
   }
@@ -1256,7 +1256,7 @@ var init__5 = __esm({
   ".svelte-kit/output/server/nodes/4.js"() {
     index5 = 4;
     component5 = async () => component_cache5 ??= (await Promise.resolve().then(() => (init_page_svelte3(), page_svelte_exports3))).default;
-    imports5 = ["_app/immutable/nodes/4._QoBfbMT.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js", "_app/immutable/chunks/CdYktaO_.js", "_app/immutable/chunks/oSOEQOCl.js"];
+    imports5 = ["_app/immutable/nodes/4.GnP_kaBc.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js", "_app/immutable/chunks/DUyIgem0.js", "_app/immutable/chunks/BUK2XHYV.js"];
     stylesheets5 = [];
     fonts5 = [];
   }
@@ -1291,7 +1291,7 @@ var init__6 = __esm({
   ".svelte-kit/output/server/nodes/5.js"() {
     index6 = 5;
     component6 = async () => component_cache6 ??= (await Promise.resolve().then(() => (init_page_svelte4(), page_svelte_exports4))).default;
-    imports6 = ["_app/immutable/nodes/5.rSOtoNb5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js"];
+    imports6 = ["_app/immutable/nodes/5.BkTYG9OK.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js"];
     stylesheets6 = [];
     fonts6 = [];
   }
@@ -1402,7 +1402,7 @@ var init__7 = __esm({
   ".svelte-kit/output/server/nodes/6.js"() {
     index7 = 6;
     component7 = async () => component_cache7 ??= (await Promise.resolve().then(() => (init_page_svelte5(), page_svelte_exports5))).default;
-    imports7 = ["_app/immutable/nodes/6.2rf2cFPr.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js", "_app/immutable/chunks/B3p9Iuz9.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oSOEQOCl.js", "_app/immutable/chunks/SgPAS0tY.js", "_app/immutable/chunks/CdYktaO_.js", "_app/immutable/chunks/BNlXaqFG.js", "_app/immutable/chunks/2chMmzDs.js"];
+    imports7 = ["_app/immutable/nodes/6.DMtBxFzS.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js", "_app/immutable/chunks/C6NGOXef.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/BUK2XHYV.js", "_app/immutable/chunks/DBdziW9K.js", "_app/immutable/chunks/DUyIgem0.js", "_app/immutable/chunks/B0O8tYtR.js", "_app/immutable/chunks/xwueFKOo.js"];
     stylesheets7 = [];
     fonts7 = [];
   }
@@ -3493,7 +3493,7 @@ var options = {
     app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="/favicon.png" />\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />\n  <meta name="theme-color" content="#0A0A0C" />\n  <meta name="apple-mobile-web-app-capable" content="yes" />\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n  <title>DocuFill \u2014 AI Document Extraction</title>\n  <style>\n    html, body { background: #0A0A0C; margin: 0; padding: 0; overscroll-behavior: none; }\n  </style>\n  ' + head + '\n</head>\n<body data-sveltekit-preload-data="hover" class="bg-bg-primary">\n  <div style="display: contents">' + body + "</div>\n</body>\n</html>\n",
     error: error2
   },
-  version_hash: "1icl7o3"
+  version_hash: "f4rvdh"
 };
 async function get_hooks() {
   let handle;
@@ -7478,7 +7478,7 @@ var manifest = (() => {
     assets: /* @__PURE__ */ new Set([]),
     mimeTypes: {},
     _: {
-      client: { start: "_app/immutable/entry/start.BiJ5qvQm.js", app: "_app/immutable/entry/app.CECSrHyY.js", imports: ["_app/immutable/entry/start.BiJ5qvQm.js", "_app/immutable/chunks/SgPAS0tY.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/CdYktaO_.js", "_app/immutable/chunks/oSOEQOCl.js", "_app/immutable/entry/app.CECSrHyY.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CX7A-DjY.js", "_app/immutable/chunks/L8x3Zlwo.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
+      client: { start: "_app/immutable/entry/start.rEEEmZRg.js", app: "_app/immutable/entry/app.DwLz5q9Q.js", imports: ["_app/immutable/entry/start.rEEEmZRg.js", "_app/immutable/chunks/DBdziW9K.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/DUyIgem0.js", "_app/immutable/chunks/BUK2XHYV.js", "_app/immutable/entry/app.DwLz5q9Q.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/CpKzatpw.js", "_app/immutable/chunks/B3nJjiGy.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
       nodes: [
         __memo(() => Promise.resolve().then(() => (init__(), __exports))),
         __memo(() => Promise.resolve().then(() => (init__2(), __exports2))),

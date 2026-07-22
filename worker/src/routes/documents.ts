@@ -103,3 +103,31 @@ function getExtension(filename: string): string {
   }
   return '.bin';
 }
+
+// GET /documents/:id/image — Serve original document image from R2
+export async function getDocumentImage(request: Request, env: Env, docId: string): Promise<Response> {
+  try {
+    const auth = await requireAuth(request, env);
+    const doc = await getDocument(env, docId);
+    if (!doc) return errorResponse('Document not found', 404);
+
+    if (env.ENVIRONMENT === 'production' && doc.user_id !== auth.uid) {
+      return errorResponse('Not authorized', 403);
+    }
+
+    const r2Object = await env.DOCUMENTS.get(doc.r2_key);
+    if (!r2Object) return errorResponse('File not found in storage', 404);
+
+    const headers = new Headers();
+    headers.set('Content-Type', doc.mime_type || 'application/octet-stream');
+    headers.set('Cache-Control', 'private, max-age=3600');
+    headers.set('Content-Disposition', `inline; filename="${doc.filename}"`);
+    r2Object.writeHttpMetadata(headers);
+
+    return addCorsHeaders(new Response(r2Object.body, { headers }));
+  } catch (err: any) {
+    if (err.name === 'AuthError') return errorResponse(err.message, 401);
+    console.error('[Image Error]', err.message);
+    return errorResponse(`Failed to get image: ${err.message}`, 500);
+  }
+}

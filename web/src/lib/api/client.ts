@@ -93,6 +93,9 @@ export const docufillApi = {
   async getDocument(id: string): Promise<DocumentDetail> {
     return api.get<DocumentDetail>(`/documents/${id}`);
   },
+  getImageUrl(id: string): string {
+    return `${PUBLIC_API_URL}/documents/${id}/image`;
+  },
 
   // Extraction
   async extractDocument(id: string, documentType?: string): Promise<ExtractionResult> {

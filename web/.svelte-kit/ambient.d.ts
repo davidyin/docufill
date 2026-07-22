@@ -52,7 +52,6 @@ declare module '$env/static/private' {
 	export const npm_config_globalconfig: string;
 	export const TERMINAL_CONTAINER_DISK: string;
 	export const VISION_TOOLS_DEBUG: string;
-	export const CLOUDFLARE_API_TOKEN: string;
 	export const npm_package_version: string;
 	export const prefill_messages_file: string;
 	export const npm_lifecycle_script: string;
@@ -233,7 +232,6 @@ declare module '$env/dynamic/private' {
 		npm_config_globalconfig: string;
 		TERMINAL_CONTAINER_DISK: string;
 		VISION_TOOLS_DEBUG: string;
-		CLOUDFLARE_API_TOKEN: string;
 		npm_package_version: string;
 		prefill_messages_file: string;
 		npm_lifecycle_script: string;

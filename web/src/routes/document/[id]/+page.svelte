@@ -208,6 +208,31 @@
         </div>
       {/if}
 
+      <!-- Receipt Image -->
+      {#if doc.mime_type?.startsWith('image/')}
+        <div class="mb-6">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer select-none mb-3">
+              <h2 class="text-lg font-display font-semibold">Original Receipt</h2>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium text-text-secondary border border-white/[0.08] group-open:bg-white/[0.04] transition-all">
+                <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                </svg>
+                Show
+              </span>
+            </summary>
+            <div class="rounded-xl overflow-hidden border border-white/[0.06] bg-black/20">
+              <img
+                src={docufillApi.getImageUrl(docId)}
+                alt={doc.filename}
+                class="w-full h-auto max-h-[500px] object-contain"
+                loading="lazy"
+              />
+            </div>
+          </details>
+        </div>
+      {/if}
+
       <!-- Extracted Fields -->
       {#if doc.status === 'extracted' && $editableFields.length > 0}
         <div class="mb-6">
