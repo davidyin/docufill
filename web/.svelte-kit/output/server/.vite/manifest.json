@@ -137,7 +137,7 @@
       "_clerk.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.DSljacef.css"
+      "_app/immutable/assets/_layout.-SOWL7NX.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -175,9 +175,6 @@
       "_exports.js",
       "_utils2.js",
       "_state.svelte.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.DpTW3rfD.css"
     ]
   },
   "src/routes/sign-up/+page.svelte": {
@@ -187,9 +184,6 @@
     "isEntry": true,
     "imports": [
       "_ssr.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.DpTW3rfD.css"
     ]
   },
   "src/routes/upload/+page.svelte": {

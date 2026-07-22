@@ -483,7 +483,7 @@ function create_ssr_component(fn) {
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css3) => css3.code).join("\n"),
+          code: Array.from(result.css).map((css) => css.code).join("\n"),
           map: null
           // TODO
         },
@@ -967,8 +967,8 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     index = 0;
     component = async () => component_cache ??= (await Promise.resolve().then(() => (init_layout_svelte(), layout_svelte_exports))).default;
-    imports = ["_app/immutable/nodes/0.CsjKSYhb.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js", "_app/immutable/chunks/CEOUoisg.js", "_app/immutable/chunks/D8jzxaDW.js", "_app/immutable/chunks/B7UjXLZm.js", "_app/immutable/chunks/DmIWNal4.js", "_app/immutable/chunks/CnMiyTp2.js", "_app/immutable/chunks/C1FmrZbK.js"];
-    stylesheets = ["_app/immutable/assets/0.DjrIl7wk.css"];
+    imports = ["_app/immutable/nodes/0.BEiTOgcX.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js", "_app/immutable/chunks/DMs8eUeM.js", "_app/immutable/chunks/Pjkh-JEt.js", "_app/immutable/chunks/DlXYnG6d.js", "_app/immutable/chunks/B91vNMUm.js", "_app/immutable/chunks/C3gm5N6H.js", "_app/immutable/chunks/C1FmrZbK.js"];
+    stylesheets = ["_app/immutable/assets/0.C2fq3Ts-.css"];
     fonts = [];
   }
 });
@@ -1006,7 +1006,7 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     index2 = 1;
     component2 = async () => component_cache2 ??= (await Promise.resolve().then(() => (init_error_svelte(), error_svelte_exports))).default;
-    imports2 = ["_app/immutable/nodes/1.BhuchCpf.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js", "_app/immutable/chunks/CEOUoisg.js", "_app/immutable/chunks/D8jzxaDW.js", "_app/immutable/chunks/B7UjXLZm.js", "_app/immutable/chunks/DmIWNal4.js"];
+    imports2 = ["_app/immutable/nodes/1.CG_6-DXq.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js", "_app/immutable/chunks/DMs8eUeM.js", "_app/immutable/chunks/Pjkh-JEt.js", "_app/immutable/chunks/DlXYnG6d.js", "_app/immutable/chunks/B91vNMUm.js"];
     stylesheets2 = [];
     fonts2 = [];
   }
@@ -1170,7 +1170,7 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     index3 = 2;
     component3 = async () => component_cache3 ??= (await Promise.resolve().then(() => (init_page_svelte(), page_svelte_exports))).default;
-    imports3 = ["_app/immutable/nodes/2.CShBF1Xc.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js", "_app/immutable/chunks/CnMiyTp2.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/DmIWNal4.js", "_app/immutable/chunks/DXjHS0GS.js"];
+    imports3 = ["_app/immutable/nodes/2.jtDxn8i6.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js", "_app/immutable/chunks/C3gm5N6H.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/B91vNMUm.js", "_app/immutable/chunks/Cj8-tZfr.js"];
     stylesheets3 = [];
     fonts3 = [];
   }
@@ -1216,7 +1216,7 @@ var init__4 = __esm({
   ".svelte-kit/output/server/nodes/3.js"() {
     index4 = 3;
     component4 = async () => component_cache4 ??= (await Promise.resolve().then(() => (init_page_svelte2(), page_svelte_exports2))).default;
-    imports4 = ["_app/immutable/nodes/3.Dgax-8E6.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js", "_app/immutable/chunks/CnMiyTp2.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/DmIWNal4.js", "_app/immutable/chunks/CEOUoisg.js", "_app/immutable/chunks/D8jzxaDW.js", "_app/immutable/chunks/B7UjXLZm.js", "_app/immutable/chunks/DXjHS0GS.js", "_app/immutable/chunks/Bvk3_T4_.js"];
+    imports4 = ["_app/immutable/nodes/3.CCsKqRZj.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js", "_app/immutable/chunks/C3gm5N6H.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/B91vNMUm.js", "_app/immutable/chunks/DMs8eUeM.js", "_app/immutable/chunks/Pjkh-JEt.js", "_app/immutable/chunks/DlXYnG6d.js", "_app/immutable/chunks/Cj8-tZfr.js", "_app/immutable/chunks/a-Qrz4Xr.js"];
     stylesheets4 = [];
     fonts4 = [];
   }
@@ -1227,7 +1227,7 @@ var page_svelte_exports3 = {};
 __export(page_svelte_exports3, {
   default: () => Page3
 });
-var css, Page3;
+var Page3;
 var init_page_svelte3 = __esm({
   ".svelte-kit/output/server/entries/pages/sign-in/_page.svelte.js"() {
     init_ssr();
@@ -1236,13 +1236,8 @@ var init_page_svelte3 = __esm({
     init_utils2();
     init_server();
     init_state_svelte();
-    css = {
-      code: ".cl-card{background:transparent !important;box-shadow:none !important;padding:0 !important}.cl-headerTitle{color:#fff !important}.cl-headerSubtitle,.cl-formFieldLabel{color:rgba(255,255,255,0.6) !important}.cl-formFieldInput{background:rgba(255,255,255,0.05) !important;border:1px solid rgba(255,255,255,0.1) !important;color:#fff !important}.cl-formFieldInput:focus{border-color:#FF6A1A !important;box-shadow:0 0 0 2px rgba(255,106,26,0.3) !important}.cl-formButtonPrimary{background:linear-gradient(135deg, #FF6A1A, #FFB000) !important;color:#000 !important;font-weight:600 !important}.cl-footerActionText,.cl-footerActionLink{color:rgba(255,255,255,0.6) !important}.cl-footerActionLink{color:#FF6A1A !important}",
-      map: `{"version":3,"file":"+page.svelte","sources":["+page.svelte"],"sourcesContent":["<script lang=\\"ts\\">import { onMount } from \\"svelte\\";\\nimport { goto } from \\"$app/navigation\\";\\nconst publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;\\nlet mountEl;\\nlet status = \\"loading\\";\\nlet errorMsg = \\"\\";\\nonMount(async () => {\\n  if (!publishableKey) {\\n    status = \\"error\\";\\n    errorMsg = \\"Clerk not configured\\";\\n    return;\\n  }\\n  try {\\n    const { Clerk } = await import(\\"@clerk/clerk-js\\");\\n    const clerk = new Clerk(publishableKey);\\n    await clerk.load();\\n    status = \\"ready\\";\\n    clerk.mountSignIn(mountEl, {\\n      redirectUrl: window.location.origin\\n    });\\n  } catch (err) {\\n    console.error(\\"[Clerk] Init error:\\", err);\\n    status = \\"error\\";\\n    errorMsg = err.message || \\"Failed to load Clerk\\";\\n  }\\n});\\n<\/script>\\n\\n<svelte:head>\\n  <title>Sign In \u2014 DocuFill</title>\\n</svelte:head>\\n\\n<div class=\\"min-h-screen flex items-center justify-center bg-bg-primary p-6\\">\\n  <div class=\\"w-full max-w-md\\">\\n    <!-- Header -->\\n    <div class=\\"text-center mb-8\\">\\n      <div class=\\"w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20\\">\\n        <span class=\\"text-3xl\\">\u{1F4C4}</span>\\n      </div>\\n      <h1 class=\\"text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent\\">\\n        DocuFill\\n      </h1>\\n      <p class=\\"text-text-tertiary text-sm mt-2\\">Sign in to continue</p>\\n    </div>\\n\\n    <!-- Loading -->\\n    {#if status === 'loading'}\\n      <div class=\\"flex flex-col items-center py-8 gap-3\\">\\n        <div class=\\"w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin\\"></div>\\n        <span class=\\"text-text-tertiary text-sm\\">Loading sign-in\u2026</span>\\n      </div>\\n    {/if}\\n\\n    <!-- Error -->\\n    {#if status === 'error'}\\n      <div class=\\"glass rounded-2xl p-6 text-center\\">\\n        <p class=\\"text-docufill-red text-sm mb-3\\">{errorMsg}</p>\\n        <button\\n          on:click={() => window.location.reload()}\\n          class=\\"px-4 py-2 bg-docufill-orange text-black text-sm font-medium rounded-xl touchable\\"\\n        >\\n          Try again\\n        </button>\\n      </div>\\n    {/if}\\n\\n    <!-- Clerk SignIn mount point -->\\n    {#if status === 'ready'}\\n      <div bind:this={mountEl} class=\\"clerk-mount\\"></div>\\n    {/if}\\n  </div>\\n</div>\\n\\n<style>\\n  /* Ensure Clerk card is visible and styled */\\n  :global(.cl-card) {\\n    background: transparent !important;\\n    box-shadow: none !important;\\n    padding: 0 !important;\\n  }\\n  :global(.cl-headerTitle) {\\n    color: #fff !important;\\n  }\\n  :global(.cl-headerSubtitle),\\n  :global(.cl-formFieldLabel) {\\n    color: rgba(255,255,255,0.6) !important;\\n  }\\n  :global(.cl-formFieldInput) {\\n    background: rgba(255,255,255,0.05) !important;\\n    border: 1px solid rgba(255,255,255,0.1) !important;\\n    color: #fff !important;\\n  }\\n  :global(.cl-formFieldInput:focus) {\\n    border-color: #FF6A1A !important;\\n    box-shadow: 0 0 0 2px rgba(255,106,26,0.3) !important;\\n  }\\n  :global(.cl-formButtonPrimary) {\\n    background: linear-gradient(135deg, #FF6A1A, #FFB000) !important;\\n    color: #000 !important;\\n    font-weight: 600 !important;\\n  }\\n  :global(.cl-footerActionText),\\n  :global(.cl-footerActionLink) {\\n    color: rgba(255,255,255,0.6) !important;\\n  }\\n  :global(.cl-footerActionLink) {\\n    color: #FF6A1A !important;\\n  }\\n</style>\\n"],"names":[],"mappings":"AA2EU,QAAU,CAChB,UAAU,CAAE,WAAW,CAAC,UAAU,CAClC,UAAU,CAAE,IAAI,CAAC,UAAU,CAC3B,OAAO,CAAE,CAAC,CAAC,UACb,CACQ,eAAiB,CACvB,KAAK,CAAE,IAAI,CAAC,UACd,CACQ,kBAAmB,CACnB,kBAAoB,CAC1B,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAC/B,CACQ,kBAAoB,CAC1B,UAAU,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC,UAAU,CAC7C,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAU,CAClD,KAAK,CAAE,IAAI,CAAC,UACd,CACQ,wBAA0B,CAChC,YAAY,CAAE,OAAO,CAAC,UAAU,CAChC,UAAU,CAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,CAAC,CAAC,UAC7C,CACQ,qBAAuB,CAC7B,UAAU,CAAE,gBAAgB,MAAM,CAAC,CAAC,OAAO,CAAC,CAAC,OAAO,CAAC,CAAC,UAAU,CAChE,KAAK,CAAE,IAAI,CAAC,UAAU,CACtB,WAAW,CAAE,GAAG,CAAC,UACnB,CACQ,oBAAqB,CACrB,oBAAsB,CAC5B,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAC/B,CACQ,oBAAsB,CAC5B,KAAK,CAAE,OAAO,CAAC,UACjB"}`
-    };
     Page3 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css);
-      return `${$$result.head += `<!-- HEAD_svelte-1rdgtk1_START -->${$$result.title = `<title>Sign In \u2014 DocuFill</title>`, ""}<!-- HEAD_svelte-1rdgtk1_END -->`, ""} <div class="min-h-screen flex items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-md"> <div class="text-center mb-8" data-svelte-h="svelte-5jxdt3"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">Sign in to continue</p></div>  ${`<div class="flex flex-col items-center py-8 gap-3" data-svelte-h="svelte-1nltzpm"><div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div> <span class="text-text-tertiary text-sm">Loading sign-in\u2026</span></div>`}  ${``}  ${``}</div> </div>`;
+      return `${$$result.head += `<!-- HEAD_svelte-1rdgtk1_START -->${$$result.title = `<title>Sign In \u2014 DocuFill</title>`, ""}<!-- HEAD_svelte-1rdgtk1_END -->`, ""} <div class="min-h-screen flex items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-md"> <div class="text-center mb-8" data-svelte-h="svelte-5jxdt3"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">Sign in to continue</p></div> ${`<div class="flex flex-col items-center py-8 gap-3" data-svelte-h="svelte-wvbruj"><div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div> <span class="text-text-tertiary text-sm">Loading\u2026</span></div>`}</div></div>`;
     });
   }
 });
@@ -1261,8 +1256,8 @@ var init__5 = __esm({
   ".svelte-kit/output/server/nodes/4.js"() {
     index5 = 4;
     component5 = async () => component_cache5 ??= (await Promise.resolve().then(() => (init_page_svelte3(), page_svelte_exports3))).default;
-    imports5 = ["_app/immutable/nodes/4.BOlK8mCm.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js", "_app/immutable/chunks/B7UjXLZm.js", "_app/immutable/chunks/DmIWNal4.js"];
-    stylesheets5 = ["_app/immutable/assets/4.DpTW3rfD.css"];
+    imports5 = ["_app/immutable/nodes/4.DCvg_dTX.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js", "_app/immutable/chunks/DlXYnG6d.js", "_app/immutable/chunks/B91vNMUm.js"];
+    stylesheets5 = [];
     fonts5 = [];
   }
 });
@@ -1272,17 +1267,12 @@ var page_svelte_exports4 = {};
 __export(page_svelte_exports4, {
   default: () => Page4
 });
-var css2, Page4;
+var Page4;
 var init_page_svelte4 = __esm({
   ".svelte-kit/output/server/entries/pages/sign-up/_page.svelte.js"() {
     init_ssr();
-    css2 = {
-      code: ".cl-card{background:transparent !important;box-shadow:none !important;padding:0 !important}.cl-headerTitle{color:#fff !important}.cl-headerSubtitle,.cl-formFieldLabel{color:rgba(255,255,255,0.6) !important}.cl-formFieldInput{background:rgba(255,255,255,0.05) !important;border:1px solid rgba(255,255,255,0.1) !important;color:#fff !important}.cl-formFieldInput:focus{border-color:#FF6A1A !important;box-shadow:0 0 0 2px rgba(255,106,26,0.3) !important}.cl-formButtonPrimary{background:linear-gradient(135deg, #FF6A1A, #FFB000) !important;color:#000 !important;font-weight:600 !important}.cl-footerActionText,.cl-footerActionLink{color:rgba(255,255,255,0.6) !important}.cl-footerActionLink{color:#FF6A1A !important}",
-      map: `{"version":3,"file":"+page.svelte","sources":["+page.svelte"],"sourcesContent":["<script lang=\\"ts\\">import { onMount } from \\"svelte\\";\\nconst publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;\\nlet mountEl;\\nlet status = \\"loading\\";\\nlet errorMsg = \\"\\";\\nonMount(async () => {\\n  if (!publishableKey) {\\n    status = \\"error\\";\\n    errorMsg = \\"Clerk not configured\\";\\n    return;\\n  }\\n  try {\\n    const { Clerk } = await import(\\"@clerk/clerk-js\\");\\n    const clerk = new Clerk(publishableKey);\\n    await clerk.load();\\n    status = \\"ready\\";\\n    clerk.mountSignUp(mountEl, {\\n      redirectUrl: window.location.origin\\n    });\\n  } catch (err) {\\n    console.error(\\"[Clerk] Init error:\\", err);\\n    status = \\"error\\";\\n    errorMsg = err.message || \\"Failed to load Clerk\\";\\n  }\\n});\\n<\/script>\\n\\n<svelte:head>\\n  <title>Sign Up \u2014 DocuFill</title>\\n</svelte:head>\\n\\n<div class=\\"min-h-screen flex items-center justify-center bg-bg-primary p-6\\">\\n  <div class=\\"w-full max-w-md\\">\\n    <div class=\\"text-center mb-8\\">\\n      <div class=\\"w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20\\">\\n        <span class=\\"text-3xl\\">\u{1F4C4}</span>\\n      </div>\\n      <h1 class=\\"text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent\\">\\n        DocuFill\\n      </h1>\\n      <p class=\\"text-text-tertiary text-sm mt-2\\">Create your account</p>\\n    </div>\\n\\n    {#if status === 'loading'}\\n      <div class=\\"flex flex-col items-center py-8 gap-3\\">\\n        <div class=\\"w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin\\"></div>\\n        <span class=\\"text-text-tertiary text-sm\\">Loading\u2026</span>\\n      </div>\\n    {/if}\\n\\n    {#if status === 'error'}\\n      <div class=\\"glass rounded-2xl p-6 text-center\\">\\n        <p class=\\"text-docufill-red text-sm mb-3\\">{errorMsg}</p>\\n        <button\\n          on:click={() => window.location.reload()}\\n          class=\\"px-4 py-2 bg-docufill-orange text-black text-sm font-medium rounded-xl touchable\\"\\n        >\\n          Try again\\n        </button>\\n      </div>\\n    {/if}\\n\\n    {#if status === 'ready'}\\n      <div bind:this={mountEl} class=\\"clerk-mount\\"></div>\\n    {/if}\\n  </div>\\n</div>\\n\\n<style>\\n  :global(.cl-card) {\\n    background: transparent !important;\\n    box-shadow: none !important;\\n    padding: 0 !important;\\n  }\\n  :global(.cl-headerTitle) { color: #fff !important; }\\n  :global(.cl-headerSubtitle),\\n  :global(.cl-formFieldLabel) { color: rgba(255,255,255,0.6) !important; }\\n  :global(.cl-formFieldInput) {\\n    background: rgba(255,255,255,0.05) !important;\\n    border: 1px solid rgba(255,255,255,0.1) !important;\\n    color: #fff !important;\\n  }\\n  :global(.cl-formFieldInput:focus) {\\n    border-color: #FF6A1A !important;\\n    box-shadow: 0 0 0 2px rgba(255,106,26,0.3) !important;\\n  }\\n  :global(.cl-formButtonPrimary) {\\n    background: linear-gradient(135deg, #FF6A1A, #FFB000) !important;\\n    color: #000 !important;\\n    font-weight: 600 !important;\\n  }\\n  :global(.cl-footerActionText),\\n  :global(.cl-footerActionLink) { color: rgba(255,255,255,0.6) !important; }\\n  :global(.cl-footerActionLink) { color: #FF6A1A !important; }\\n</style>\\n"],"names":[],"mappings":"AAqEU,QAAU,CAChB,UAAU,CAAE,WAAW,CAAC,UAAU,CAClC,UAAU,CAAE,IAAI,CAAC,UAAU,CAC3B,OAAO,CAAE,CAAC,CAAC,UACb,CACQ,eAAiB,CAAE,KAAK,CAAE,IAAI,CAAC,UAAY,CAC3C,kBAAmB,CACnB,kBAAoB,CAAE,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAY,CAC/D,kBAAoB,CAC1B,UAAU,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,CAAC,UAAU,CAC7C,MAAM,CAAE,GAAG,CAAC,KAAK,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAU,CAClD,KAAK,CAAE,IAAI,CAAC,UACd,CACQ,wBAA0B,CAChC,YAAY,CAAE,OAAO,CAAC,UAAU,CAChC,UAAU,CAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,KAAK,GAAG,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,CAAC,CAAC,UAC7C,CACQ,qBAAuB,CAC7B,UAAU,CAAE,gBAAgB,MAAM,CAAC,CAAC,OAAO,CAAC,CAAC,OAAO,CAAC,CAAC,UAAU,CAChE,KAAK,CAAE,IAAI,CAAC,UAAU,CACtB,WAAW,CAAE,GAAG,CAAC,UACnB,CACQ,oBAAqB,CACrB,oBAAsB,CAAE,KAAK,CAAE,KAAK,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC,UAAY,CACjE,oBAAsB,CAAE,KAAK,CAAE,OAAO,CAAC,UAAY"}`
-    };
     Page4 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css2);
-      return `${$$result.head += `<!-- HEAD_svelte-1e8ihgv_START -->${$$result.title = `<title>Sign Up \u2014 DocuFill</title>`, ""}<!-- HEAD_svelte-1e8ihgv_END -->`, ""} <div class="min-h-screen flex items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-md"><div class="text-center mb-8" data-svelte-h="svelte-18km2zh"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">Create your account</p></div> ${`<div class="flex flex-col items-center py-8 gap-3" data-svelte-h="svelte-wvbruj"><div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div> <span class="text-text-tertiary text-sm">Loading\u2026</span></div>`} ${``} ${``}</div> </div>`;
+      return `${$$result.head += `<!-- HEAD_svelte-1e8ihgv_START -->${$$result.title = `<title>Sign Up \u2014 DocuFill</title>`, ""}<!-- HEAD_svelte-1e8ihgv_END -->`, ""} <div class="min-h-screen flex items-center justify-center bg-bg-primary p-6"><div class="w-full max-w-md"><div class="text-center mb-8" data-svelte-h="svelte-18km2zh"><div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-docufill-orange to-docufill-yellow flex items-center justify-center mb-4 shadow-lg shadow-docufill-orange/20"><span class="text-3xl">\u{1F4C4}</span></div> <h1 class="text-2xl font-display font-bold bg-gradient-to-r from-docufill-orange to-docufill-yellow bg-clip-text text-transparent">DocuFill</h1> <p class="text-text-tertiary text-sm mt-2">Create your account</p></div> ${`<div class="flex flex-col items-center py-8 gap-3" data-svelte-h="svelte-wvbruj"><div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div> <span class="text-text-tertiary text-sm">Loading\u2026</span></div>`}</div></div>`;
     });
   }
 });
@@ -1301,8 +1291,8 @@ var init__6 = __esm({
   ".svelte-kit/output/server/nodes/5.js"() {
     index6 = 5;
     component6 = async () => component_cache6 ??= (await Promise.resolve().then(() => (init_page_svelte4(), page_svelte_exports4))).default;
-    imports6 = ["_app/immutable/nodes/5.BSbBbrc7.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js"];
-    stylesheets6 = ["_app/immutable/assets/4.DpTW3rfD.css"];
+    imports6 = ["_app/immutable/nodes/5.Ctuo8plU.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js"];
+    stylesheets6 = [];
     fonts6 = [];
   }
 });
@@ -1402,7 +1392,7 @@ var init__7 = __esm({
   ".svelte-kit/output/server/nodes/6.js"() {
     index7 = 6;
     component7 = async () => component_cache7 ??= (await Promise.resolve().then(() => (init_page_svelte5(), page_svelte_exports5))).default;
-    imports7 = ["_app/immutable/nodes/6.CGR_VLZA.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js", "_app/immutable/chunks/CnMiyTp2.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/DmIWNal4.js", "_app/immutable/chunks/D8jzxaDW.js", "_app/immutable/chunks/B7UjXLZm.js", "_app/immutable/chunks/DXjHS0GS.js", "_app/immutable/chunks/Bvk3_T4_.js"];
+    imports7 = ["_app/immutable/nodes/6.D_pOlV6o.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js", "_app/immutable/chunks/C3gm5N6H.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/B91vNMUm.js", "_app/immutable/chunks/Pjkh-JEt.js", "_app/immutable/chunks/DlXYnG6d.js", "_app/immutable/chunks/Cj8-tZfr.js", "_app/immutable/chunks/a-Qrz4Xr.js"];
     stylesheets7 = [];
     fonts7 = [];
   }
@@ -3493,7 +3483,7 @@ var options = {
     app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="/favicon.png" />\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />\n  <meta name="theme-color" content="#0A0A0C" />\n  <meta name="apple-mobile-web-app-capable" content="yes" />\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n  <title>DocuFill \u2014 AI Document Extraction</title>\n  <style>\n    html, body { background: #0A0A0C; margin: 0; padding: 0; overscroll-behavior: none; }\n  </style>\n  ' + head + '\n</head>\n<body data-sveltekit-preload-data="hover" class="bg-bg-primary">\n  <div style="display: contents">' + body + "</div>\n</body>\n</html>\n",
     error: error2
   },
-  version_hash: "dwtov2"
+  version_hash: "1b5be8q"
 };
 async function get_hooks() {
   let handle;
@@ -4980,16 +4970,16 @@ export const route = ${csr_route}; export const params = ${JSON.stringify(params
 }
 function create_css_import(route, url, client) {
   const { errors, layouts, leaf } = route;
-  let css3 = "";
+  let css = "";
   for (const node of [...errors, ...layouts.map((l) => l?.[1]), leaf[1]]) {
     if (typeof node !== "number") continue;
     const node_css = client.css?.[node];
     for (const css_path of node_css ?? []) {
-      css3 += `'${assets || base}/${css_path}',`;
+      css += `'${assets || base}/${css_path}',`;
     }
   }
-  if (!css3) return "";
-  return `${create_client_import(client.start, url)}.then(x => x.load_css([${css3}]));`;
+  if (!css) return "";
+  return `${create_client_import(client.start, url)}.then(x => x.load_css([${css}]));`;
 }
 async function handle_remote_call(event, state, options2, manifest2, id) {
   return record_span({
@@ -5515,14 +5505,14 @@ async function render_response({
         if (options2.async) {
           reset();
         }
-        const { head: head2, html: html2, css: css3, hashes } = (
+        const { head: head2, html: html2, css, hashes } = (
           /** @type {ReturnType<typeof options.root.render>} */
           options2.async ? await rendered2 : rendered2
         );
         if (hashes) {
           csp.add_script_hashes(hashes.script);
         }
-        return { head: head2, html: html2, css: css3, hashes };
+        return { head: head2, html: html2, css, hashes };
       });
     } finally {
       reset();
@@ -5535,12 +5525,12 @@ async function render_response({
     for (const url of node.stylesheets) stylesheets8.add(url);
     for (const url of node.fonts) fonts8.add(url);
     if (node.inline_styles && !client?.inline) {
-      Object.entries(await node.inline_styles()).forEach(([filename, css3]) => {
-        if (typeof css3 === "string") {
-          inline_styles.set(filename, css3);
+      Object.entries(await node.inline_styles()).forEach(([filename, css]) => {
+        if (typeof css === "string") {
+          inline_styles.set(filename, css);
           return;
         }
-        inline_styles.set(filename, css3(`${assets$1}/${app_dir}/immutable/assets`, assets$1));
+        inline_styles.set(filename, css(`${assets$1}/${app_dir}/immutable/assets`, assets$1));
       });
     }
   }
@@ -7478,7 +7468,7 @@ var manifest = (() => {
     assets: /* @__PURE__ */ new Set([]),
     mimeTypes: {},
     _: {
-      client: { start: "_app/immutable/entry/start.Psj0rRZ9.js", app: "_app/immutable/entry/app.D3ypwTh8.js", imports: ["_app/immutable/entry/start.Psj0rRZ9.js", "_app/immutable/chunks/D8jzxaDW.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/B7UjXLZm.js", "_app/immutable/chunks/DmIWNal4.js", "_app/immutable/entry/app.D3ypwTh8.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Dl07EFqX.js", "_app/immutable/chunks/Bv1cZzuK.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
+      client: { start: "_app/immutable/entry/start.BuX1iDHk.js", app: "_app/immutable/entry/app.DtmTha15.js", imports: ["_app/immutable/entry/start.BuX1iDHk.js", "_app/immutable/chunks/Pjkh-JEt.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/DlXYnG6d.js", "_app/immutable/chunks/B91vNMUm.js", "_app/immutable/entry/app.DtmTha15.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/1fP5YxTP.js", "_app/immutable/chunks/Ba7r1QFJ.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
       nodes: [
         __memo(() => Promise.resolve().then(() => (init__(), __exports))),
         __memo(() => Promise.resolve().then(() => (init__2(), __exports2))),

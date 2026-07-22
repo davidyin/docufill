@@ -3,8 +3,7 @@
   import { goto } from '$app/navigation';
 
   const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-  let mountEl: HTMLDivElement;
-  let status = 'loading'; // loading | ready | error
+  let status = 'loading'; // loading | redirecting | error
   let errorMsg = '';
 
   onMount(async () => {
@@ -17,11 +16,11 @@
       const { Clerk } = await import('@clerk/clerk-js');
       const clerk = new Clerk(publishableKey);
       await clerk.load();
-      status = 'ready';
-
-      // Mount the SignIn component into the page
-      clerk.mountSignIn(mountEl, {
+      status = 'redirecting';
+      // Redirect to Clerk-hosted sign-in, then back here after auth
+      clerk.redirectToSignIn({
         redirectUrl: window.location.origin,
+        initialValues: {},
       });
     } catch (err: any) {
       console.error('[Clerk] Init error:', err);
@@ -48,16 +47,17 @@
       <p class="text-text-tertiary text-sm mt-2">Sign in to continue</p>
     </div>
 
-    <!-- Loading -->
     {#if status === 'loading'}
       <div class="flex flex-col items-center py-8 gap-3">
         <div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div>
-        <span class="text-text-tertiary text-sm">Loading sign-in…</span>
+        <span class="text-text-tertiary text-sm">Loading…</span>
       </div>
-    {/if}
-
-    <!-- Error -->
-    {#if status === 'error'}
+    {:else if status === 'redirecting'}
+      <div class="flex flex-col items-center py-8 gap-3">
+        <div class="w-8 h-8 border-2 border-docufill-orange border-t-transparent rounded-full animate-spin"></div>
+        <span class="text-text-tertiary text-sm">Redirecting to sign-in…</span>
+      </div>
+    {:else if status === 'error'}
       <div class="glass rounded-2xl p-6 text-center">
         <p class="text-docufill-red text-sm mb-3">{errorMsg}</p>
         <button
@@ -68,47 +68,5 @@
         </button>
       </div>
     {/if}
-
-    <!-- Clerk SignIn mount point -->
-    {#if status === 'ready'}
-      <div bind:this={mountEl} class="clerk-mount"></div>
-    {/if}
   </div>
 </div>
-
-<style>
-  /* Ensure Clerk card is visible and styled */
-  :global(.cl-card) {
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
-  :global(.cl-headerTitle) {
-    color: #fff !important;
-  }
-  :global(.cl-headerSubtitle),
-  :global(.cl-formFieldLabel) {
-    color: rgba(255,255,255,0.6) !important;
-  }
-  :global(.cl-formFieldInput) {
-    background: rgba(255,255,255,0.05) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
-    color: #fff !important;
-  }
-  :global(.cl-formFieldInput:focus) {
-    border-color: #FF6A1A !important;
-    box-shadow: 0 0 0 2px rgba(255,106,26,0.3) !important;
-  }
-  :global(.cl-formButtonPrimary) {
-    background: linear-gradient(135deg, #FF6A1A, #FFB000) !important;
-    color: #000 !important;
-    font-weight: 600 !important;
-  }
-  :global(.cl-footerActionText),
-  :global(.cl-footerActionLink) {
-    color: rgba(255,255,255,0.6) !important;
-  }
-  :global(.cl-footerActionLink) {
-    color: #FF6A1A !important;
-  }
-</style>

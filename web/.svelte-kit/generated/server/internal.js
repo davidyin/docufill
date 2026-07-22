@@ -26,7 +26,7 @@ export const options = {
 		app: ({ head, body, assets, nonce, env }) => "<!DOCTYPE html>\n<html lang=\"en\" class=\"dark\">\n<head>\n  <meta charset=\"utf-8\" />\n  <link rel=\"icon\" href=\"/favicon.png\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no\" />\n  <meta name=\"theme-color\" content=\"#0A0A0C\" />\n  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\" />\n  <title>DocuFill — AI Document Extraction</title>\n  <style>\n    html, body { background: #0A0A0C; margin: 0; padding: 0; overscroll-behavior: none; }\n  </style>\n  " + head + "\n</head>\n<body data-sveltekit-preload-data=\"hover\" class=\"bg-bg-primary\">\n  <div style=\"display: contents\">" + body + "</div>\n</body>\n</html>\n",
 		error
 	},
-	version_hash: "17vbthz"
+	version_hash: "yttpss"
 };
 
 export async function get_hooks() {
