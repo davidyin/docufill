@@ -1,6 +1,6 @@
 {
   ".svelte-kit/generated/client-optimized/app.js": {
-    "file": "_app/immutable/entry/app.DtmTha15.js",
+    "file": "_app/immutable/entry/app.BBUyUsfJ.js",
     "name": "entry/app",
     "src": ".svelte-kit/generated/client-optimized/app.js",
     "isEntry": true,
@@ -21,7 +21,7 @@
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/0.js": {
-    "file": "_app/immutable/nodes/0.BEiTOgcX.js",
+    "file": "_app/immutable/nodes/0.Cu_0DHaq.js",
     "name": "nodes/0",
     "src": ".svelte-kit/generated/client-optimized/nodes/0.js",
     "isEntry": true,
@@ -29,7 +29,7 @@
     "imports": [
       "_1fP5YxTP.js",
       "_Ba7r1QFJ.js",
-      "_DMs8eUeM.js",
+      "_BcxlaXcp.js",
       "_C3gm5N6H.js"
     ],
     "css": [
@@ -37,7 +37,7 @@
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/1.js": {
-    "file": "_app/immutable/nodes/1.CG_6-DXq.js",
+    "file": "_app/immutable/nodes/1.9EgCHeMV.js",
     "name": "nodes/1",
     "src": ".svelte-kit/generated/client-optimized/nodes/1.js",
     "isEntry": true,
@@ -45,7 +45,7 @@
     "imports": [
       "_1fP5YxTP.js",
       "_Ba7r1QFJ.js",
-      "_DMs8eUeM.js"
+      "_BcxlaXcp.js"
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/2.js": {
@@ -62,7 +62,7 @@
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/3.js": {
-    "file": "_app/immutable/nodes/3.CCsKqRZj.js",
+    "file": "_app/immutable/nodes/3.BR5TvlJ2.js",
     "name": "nodes/3",
     "src": ".svelte-kit/generated/client-optimized/nodes/3.js",
     "isEntry": true,
@@ -71,13 +71,13 @@
       "_1fP5YxTP.js",
       "_Ba7r1QFJ.js",
       "_C3gm5N6H.js",
-      "_DMs8eUeM.js",
+      "_BcxlaXcp.js",
       "_Cj8-tZfr.js",
       "_a-Qrz4Xr.js"
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/4.js": {
-    "file": "_app/immutable/nodes/4.DCvg_dTX.js",
+    "file": "_app/immutable/nodes/4.OXib7Ai6.js",
     "name": "nodes/4",
     "src": ".svelte-kit/generated/client-optimized/nodes/4.js",
     "isEntry": true,
@@ -86,7 +86,7 @@
       "_C1FmrZbK.js",
       "_1fP5YxTP.js",
       "_Ba7r1QFJ.js",
-      "_DlXYnG6d.js"
+      "_BoDBhRRl.js"
     ],
     "dynamicImports": [
       "node_modules/@clerk/clerk-js/dist/clerk.mjs"
@@ -108,7 +108,7 @@
     ]
   },
   ".svelte-kit/generated/client-optimized/nodes/6.js": {
-    "file": "_app/immutable/nodes/6.D_pOlV6o.js",
+    "file": "_app/immutable/nodes/6.BmeUddg-.js",
     "name": "nodes/6",
     "src": ".svelte-kit/generated/client-optimized/nodes/6.js",
     "isEntry": true,
@@ -117,7 +117,7 @@
       "_1fP5YxTP.js",
       "_Ba7r1QFJ.js",
       "_C3gm5N6H.js",
-      "_Pjkh-JEt.js",
+      "_lL0TwZnZ.js",
       "_Cj8-tZfr.js",
       "_a-Qrz4Xr.js"
     ]
@@ -144,6 +144,21 @@
     "name": "index",
     "imports": [
       "_1fP5YxTP.js"
+    ]
+  },
+  "_BcxlaXcp.js": {
+    "file": "_app/immutable/chunks/BcxlaXcp.js",
+    "name": "stores",
+    "imports": [
+      "_lL0TwZnZ.js"
+    ]
+  },
+  "_BoDBhRRl.js": {
+    "file": "_app/immutable/chunks/BoDBhRRl.js",
+    "name": "state.svelte",
+    "imports": [
+      "_1fP5YxTP.js",
+      "_B91vNMUm.js"
     ]
   },
   "_C1FmrZbK.js": {
@@ -173,36 +188,21 @@
       "_Ba7r1QFJ.js"
     ]
   },
-  "_DMs8eUeM.js": {
-    "file": "_app/immutable/chunks/DMs8eUeM.js",
-    "name": "stores",
-    "imports": [
-      "_Pjkh-JEt.js"
-    ]
-  },
-  "_DlXYnG6d.js": {
-    "file": "_app/immutable/chunks/DlXYnG6d.js",
-    "name": "state.svelte",
-    "imports": [
-      "_1fP5YxTP.js",
-      "_B91vNMUm.js"
-    ]
-  },
-  "_Pjkh-JEt.js": {
-    "file": "_app/immutable/chunks/Pjkh-JEt.js",
-    "name": "entry",
-    "imports": [
-      "_1fP5YxTP.js",
-      "_DlXYnG6d.js",
-      "_B91vNMUm.js"
-    ]
-  },
   "_a-Qrz4Xr.js": {
     "file": "_app/immutable/chunks/a-Qrz4Xr.js",
     "name": "Button",
     "imports": [
       "_1fP5YxTP.js",
       "_Ba7r1QFJ.js"
+    ]
+  },
+  "_lL0TwZnZ.js": {
+    "file": "_app/immutable/chunks/lL0TwZnZ.js",
+    "name": "entry",
+    "imports": [
+      "_1fP5YxTP.js",
+      "_BoDBhRRl.js",
+      "_B91vNMUm.js"
     ]
   },
   "node_modules/@clerk/clerk-js/dist/clerk.mjs": {
@@ -212,13 +212,13 @@
     "isDynamicEntry": true
   },
   "node_modules/@sveltejs/kit/src/runtime/client/entry.js": {
-    "file": "_app/immutable/entry/start.BuX1iDHk.js",
+    "file": "_app/immutable/entry/start.DqmKDMxl.js",
     "name": "entry/start",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/entry.js",
     "isEntry": true,
     "imports": [
-      "_Pjkh-JEt.js",
-      "_DlXYnG6d.js"
+      "_lL0TwZnZ.js",
+      "_BoDBhRRl.js"
     ]
   }
 }

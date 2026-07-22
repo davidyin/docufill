@@ -1,4 +1,4 @@
-import { c as create_ssr_component, d as add_attribute, e as escape, f as createEventDispatcher, s as subscribe, o as onDestroy, v as validate_component } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, d as add_attribute, e as escape, f as createEventDispatcher, o as onDestroy, s as subscribe, v as validate_component } from "../../../chunks/ssr.js";
 import "@sveltejs/kit/internal";
 import "../../../chunks/exports.js";
 import "../../../chunks/utils2.js";
@@ -48,6 +48,16 @@ const Dropzone = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   let { accept = "image/jpeg,image/png,image/webp,application/pdf" } = $$props;
   let { disabled = false } = $$props;
   createEventDispatcher();
+  const prevent = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  onDestroy(() => {
+    document.removeEventListener("dragenter", prevent);
+    document.removeEventListener("dragover", prevent);
+    document.removeEventListener("dragleave", prevent);
+    document.removeEventListener("drop", prevent);
+  });
   if ($$props.accept === void 0 && $$bindings.accept && accept !== void 0) $$bindings.accept(accept);
   if ($$props.disabled === void 0 && $$bindings.disabled && disabled !== void 0) $$bindings.disabled(disabled);
   return `<div class="${["relative w-full", disabled ? "opacity-50" : ""].join(" ").trim()}"> <button type="button" class="${[

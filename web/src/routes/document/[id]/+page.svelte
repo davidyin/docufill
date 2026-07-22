@@ -85,7 +85,21 @@
     fields.forEach(f => {
       const conf = f.confidence ? ` (${Math.round(f.confidence * 100)}%)` : '';
       const edited = f.isEdited ? ' [edited]' : '';
-      content += `${f.label}: ${f.value || '—'}${conf}${edited}\n`;
+      if (f.name === 'line_items' || f.name === 'line_item') {
+        content += `${f.label}:${conf}${edited}\n`;
+        try {
+          const items = JSON.parse(f.value);
+          if (Array.isArray(items)) {
+            items.forEach((item: any, i: number) => {
+              content += `  ${i + 1}. ${item.description || ''} x${item.quantity || 1} @ ${item.unit_price || 0} = ${item.total || 0}\n`;
+            });
+          }
+        } catch {
+          content += `  ${f.value}\n`;
+        }
+      } else {
+        content += `${f.label}: ${f.value || '—'}${conf}${edited}\n`;
+      }
     });
 
     downloadText(`docufill_${docId}_${Date.now()}.txt`, content);
@@ -99,6 +113,25 @@
     if (docType === 't4') return '🏦';
     if (docType === 't5') return '📊';
     return '📁';
+  }
+
+  function isLineItems(fieldName: string): boolean {
+    return fieldName === 'line_items' || fieldName === 'line_item';
+  }
+
+  function parseLineItems(value: string): Array<{ description: string; quantity: number; unit_price: number; total: number }> {
+    try {
+      const parsed = JSON.parse(value);
+      if (Array.isArray(parsed)) return parsed;
+    } catch { /* not valid JSON */ }
+    return [];
+  }
+
+  function formatPrice(value: number | string): string {
+    if (value === null || value === undefined || value === '') return '—';
+    const num = typeof value === 'string' ? parseFloat(value) : value;
+    if (isNaN(num)) return '—';
+    return num.toFixed(2);
   }
 
   function getAverageConfidence(): number {
@@ -208,7 +241,33 @@
                     {/if}
                   </div>
 
-                  {#if editMode}
+                  {#if isLineItems(field.name)}
+                    <!-- Line Items Table -->
+                    <div class="overflow-x-auto">
+                      <table class="w-full text-xs">
+                        <thead>
+                          <tr class="text-text-tertiary uppercase tracking-wider">
+                            <th class="text-left py-1 pr-2">#</th>
+                            <th class="text-left py-1 pr-2">Description</th>
+                            <th class="text-right py-1 pr-2">Qty</th>
+                            <th class="text-right py-1 pr-2">Price</th>
+                            <th class="text-right py-1">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {#each parseLineItems(field.value) as item, i}
+                            <tr class="border-t border-white/5">
+                              <td class="py-1 pr-2 text-text-tertiary">{i + 1}</td>
+                              <td class="py-1 pr-2 text-text-primary">{item.description}</td>
+                              <td class="py-1 pr-2 text-text-secondary text-right">{item.quantity}</td>
+                              <td class="py-1 pr-2 text-text-secondary text-right num">{formatPrice(item.unit_price)}</td>
+                              <td class="py-1 text-text-primary text-right num">{formatPrice(item.total)}</td>
+                            </tr>
+                          {/each}
+                        </tbody>
+                      </table>
+                    </div>
+                  {:else if editMode}
                     <div class="flex items-center gap-2">
                       <input
                         type="text"

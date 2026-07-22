@@ -121,12 +121,16 @@ export async function extractDocument(request: Request, env: Env, docId: string)
     for (const [key, val] of Object.entries(fields)) {
       if (key === 'document_type' || key === 'confidence') continue;
       if (val && typeof val === 'object' && 'value' in (val as any)) {
+        const rawValue = (val as any).value;
         fieldEntries[key] = {
-          value: String((val as any).value),
+          value: typeof rawValue === 'object' ? JSON.stringify(rawValue) : String(rawValue),
           confidence: (val as any).confidence ?? 0.9,
         };
       } else {
-        fieldEntries[key] = { value: String(val), confidence: 0.85 };
+        fieldEntries[key] = {
+          value: typeof val === 'object' ? JSON.stringify(val) : String(val),
+          confidence: 0.85,
+        };
       }
     }
 
