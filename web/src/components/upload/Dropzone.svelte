@@ -14,6 +14,11 @@
   let dragCounter = 0;
   let inputEl: HTMLInputElement;
 
+  const prevent = (e: DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   function handleDragEnter(e: DragEvent) {
     e.preventDefault();
     e.stopPropagation();
@@ -61,22 +66,17 @@
   }
 
   onMount(() => {
-    // Prevent default drag behaviors on the whole document
-    const prevent = (e: DragEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-    };
     document.addEventListener('dragenter', prevent);
     document.addEventListener('dragover', prevent);
     document.addEventListener('dragleave', prevent);
     document.addEventListener('drop', prevent);
+  });
 
-    onDestroy(() => {
-      document.removeEventListener('dragenter', prevent);
-      document.removeEventListener('dragover', prevent);
-      document.removeEventListener('dragleave', prevent);
-      document.removeEventListener('drop', prevent);
-    });
+  onDestroy(() => {
+    document.removeEventListener('dragenter', prevent);
+    document.removeEventListener('dragover', prevent);
+    document.removeEventListener('dragleave', prevent);
+    document.removeEventListener('drop', prevent);
   });
 </script>
 
