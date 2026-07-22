@@ -2,6 +2,7 @@
   import '../app.css';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
+  import { page } from '$app/stores';
   import { fade } from 'svelte/transition';
   import Sidebar from '$components/layout/Sidebar.svelte';
   import TopBar from '$components/layout/TopBar.svelte';
@@ -13,6 +14,9 @@
     isSignedIn,
     authReady,
   } from '$lib/clerk';
+
+  // Don't show the landing page on dedicated auth routes
+  $: isAuthRoute = $page.url.pathname === '/sign-in' || $page.url.pathname === '/sign-up';
 
   let isDesktop = false;
   let resizeHandler: () => void;
@@ -51,8 +55,8 @@
     <Spinner size="md" />
     <span class="text-text-tertiary text-sm mt-4">Loading DocuFill...</span>
   </div>
-{:else if isClerkEnabled && !$isSignedIn}
-  <!-- Clerk Sign-In Page -->
+{:else if isClerkEnabled && !$isSignedIn && !isAuthRoute}
+  <!-- Clerk Sign-In Landing Page (only on non-auth routes) -->
   <div class="h-screen w-screen flex flex-col items-center justify-center bg-bg-primary p-6" transition:fade>
     <div class="w-full max-w-sm">
       <!-- Logo -->
@@ -66,7 +70,7 @@
         <p class="text-text-tertiary text-sm mt-2">AI-Powered Document Extraction</p>
       </div>
 
-  <!-- Sign In Button -->
+      <!-- Sign In Button -->
       <a
         href="/sign-in"
         class="w-full py-3 px-4 bg-gradient-to-r from-docufill-orange to-docufill-yellow text-black font-semibold rounded-xl touchable shadow-lg shadow-docufill-orange/20 hover:shadow-docufill-orange/30 transition-shadow inline-block text-center"
@@ -80,28 +84,33 @@
     </div>
   </div>
 {:else}
-  <!-- App Shell -->
-  <div class="flex overflow-hidden" style="height: var(--app-height);">
-    <!-- Desktop Sidebar -->
-    {#if isDesktop}
-      <Sidebar {isDesktop} />
-    {/if}
-
-    <div class="flex-1 flex flex-col overflow-hidden">
-      <!-- Top Bar -->
-      <TopBar />
-
-      <!-- Main Content -->
-      <main class="flex-1 overflow-hidden">
-        <slot />
-      </main>
-
-      <!-- Mobile Bottom Nav -->
-      {#if !isDesktop}
-        <div class="safe-bottom">
-          <Sidebar {isDesktop} />
-        </div>
+  <!-- App Shell (signed in) OR Auth Route (sign-in / sign-up pages) -->
+  {#if isSignedIn}
+    <div class="flex overflow-hidden" style="height: var(--app-height);">
+      <!-- Desktop Sidebar -->
+      {#if isDesktop}
+        <Sidebar {isDesktop} />
       {/if}
+
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Top Bar -->
+        <TopBar />
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-hidden">
+          <slot />
+        </main>
+
+        <!-- Mobile Bottom Nav -->
+        {#if !isDesktop}
+          <div class="safe-bottom">
+            <Sidebar {isDesktop} />
+          </div>
+        {/if}
+      </div>
     </div>
-  </div>
+  {:else}
+    <!-- Auth route: just render the page content without app shell -->
+    <slot />
+  {/if}
 {/if}
