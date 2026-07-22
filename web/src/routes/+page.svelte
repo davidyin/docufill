@@ -10,7 +10,66 @@
   import Spinner from '$components/ui/Spinner.svelte';
 
   let loading = true;
+  let exporting = false;
   let recentDocs: Document[] = [];
+
+  async function exportAllCsv() {
+    if (exporting) return;
+    exporting = true;
+    try {
+      // Fetch details for all extracted documents
+      const extracted = recentDocs.filter(d => d.status === 'extracted');
+      const details = await Promise.all(
+        extracted.map(d => docufillApi.getDocument(d.id))
+      );
+
+      // Collect all unique field names across documents
+      const allFields = new Set<string>();
+      details.forEach(doc => {
+        doc.extracted_fields?.forEach(f => allFields.add(f.field_name));
+      });
+      const fieldNames = Array.from(allFields).sort();
+
+      // Build CSV header
+      const headers = ['Filename', 'Type', 'Date', 'File Size', ...fieldNames];
+      const rows = details.map(doc => {
+        const fieldMap: Record<string, string> = {};
+        doc.extracted_fields?.forEach(f => {
+          fieldMap[f.field_name] = f.field_value || '';
+        });
+        return [
+          doc.filename,
+          doc.document_type || '',
+          doc.created_at,
+          String(doc.file_size),
+          ...fieldNames.map(fn => fieldMap[fn] || ''),
+        ];
+      });
+
+      // Escape CSV values
+      const csvRows = [headers, ...rows].map(row =>
+        row.map(v => {
+          const s = String(v ?? '');
+          return s.includes(',') || s.includes('"') || s.includes('\n')
+            ? `"${s.replace(/"/g, '""')}"`
+            : s;
+        }).join(',')
+      );
+
+      const csv = csvRows.join('\n');
+      const bom = '﻿';
+      const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `docufill_export_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Export failed:', err);
+    }
+    exporting = false;
+  }
 
   onMount(async () => {
     try {
@@ -82,9 +141,27 @@
     <div class="mb-6">
       <div class="flex items-center justify-between mb-4">
         <h2 class="text-lg font-display font-semibold">Recent Documents</h2>
-        {#if recentDocs.length > 0}
-          <span class="text-xs text-text-tertiary">{recentDocs.length} total</span>
-        {/if}
+        <div class="flex items-center gap-2">
+          {#if recentDocs.some(d => d.status === 'extracted')}
+            <button
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border border-white/[0.08] text-text-secondary hover:border-docufill-orange/30 hover:text-docufill-orange transition-all touchable"
+              on:click={exportAllCsv}
+              disabled={exporting}
+            >
+              {#if exporting}
+                <span class="w-3 h-3 border-2 border-docufill-orange/30 border-t-docufill-orange rounded-full animate-spin"></span>
+              {:else}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/>
+                </svg>
+              {/if}
+              {exporting ? 'Exporting...' : 'Export All'}
+            </button>
+          {/if}
+          {#if recentDocs.length > 0}
+            <span class="text-xs text-text-tertiary">{recentDocs.length} total</span>
+          {/if}
+        </div>
       </div>
 
       {#if loading}
