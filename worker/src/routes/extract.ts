@@ -1,6 +1,6 @@
 import type { Env } from '../types';
 import { jsonResponse, errorResponse } from '../middleware/cors';
-import { getDocument, updateDocumentStatus, insertExtractedFields, insertExtractionResult, getExtractedFields } from '../db/queries';
+import { getDocument, updateDocumentStatus, getExtractedFields } from '../db/queries';
 import { requireAuth, AuthError } from '../middleware/auth';
 import { extractFromImage } from '../ai/gemini';
 import { getPromptForDocType } from '../ai/prompts';
@@ -23,13 +23,19 @@ export async function extractDocument(request: Request, env: Env, docId: string)
     const prompt = getPromptForDocType(docType);
 
     // Mark as processing
-    await updateDocumentStatus(env, docId, 'processing');
+    const now = new Date().toISOString();
+    await env.DB.prepare(
+      "UPDATE documents SET status = 'processing', updated_at = ? WHERE id = ?"
+    ).bind(now, docId).run();
 
     // Fetch image from R2
     const r2Object = await env.DOCUMENTS.get(doc.r2_key);
     if (!r2Object) {
-      await updateDocumentStatus(env, docId, 'error', { error_message: 'File not found in storage' });
-      return errorResponse('Document file not found in storage', 500);
+      const errMsg = 'File not found in storage';
+      await env.DB.prepare(
+        "UPDATE documents SET status = 'error', error_message = ?, updated_at = ? WHERE id = ?"
+      ).bind(errMsg, new Date().toISOString(), docId).run();
+      return errorResponse(errMsg, 500);
     }
 
     const imageBuffer = await r2Object.arrayBuffer();
@@ -42,30 +48,48 @@ export async function extractDocument(request: Request, env: Env, docId: string)
       prompt
     );
 
-    // Parse JSON response
+    // Parse JSON response from Gemini
     let parsed: any;
     try {
-      // Try to find JSON block in response
-      const jsonMatch = text.match(/\{[\s\S]*\}/);
-      parsed = JSON.parse(jsonMatch ? jsonMatch[0] : text);
-    } catch (parseErr) {
-      await updateDocumentStatus(env, docId, 'error', { error_message: 'Failed to parse AI response' });
-      return errorResponse('AI returned non-structured output', 500);
+      console.log('[Extract] Raw AI response (first 300 chars):', text.slice(0, 300));
+
+      // Strip markdown code blocks if present
+      let cleaned = text.replace(/```json/g, '').replace(/```/g, '').trim();
+
+      // Find the outermost JSON object — find first { and its matching }
+      const firstBrace = cleaned.indexOf('{');
+      if (firstBrace === -1) throw new Error('No JSON object found in response');
+
+      // Find matching closing brace by counting depth
+      let depth = 0;
+      let lastBrace = -1;
+      for (let i = firstBrace; i < cleaned.length; i++) {
+        if (cleaned[i] === '{') depth++;
+        if (cleaned[i] === '}') depth--;
+        if (depth === 0) { lastBrace = i; break; }
+      }
+      if (lastBrace === -1) throw new Error('Unclosed JSON object in response');
+
+      const jsonStr = cleaned.slice(firstBrace, lastBrace + 1);
+      console.log('[Extract] Parsing JSON, length:', jsonStr.length);
+      parsed = JSON.parse(jsonStr);
+    } catch (parseErr: any) {
+      const errMsg = `Failed to parse AI response: ${text.slice(0, 200)}`;
+      await env.DB.prepare(
+        "UPDATE documents SET status = 'error', error_message = ?, updated_at = ? WHERE id = ?"
+      ).bind(errMsg, new Date().toISOString(), docId).run();
+      return errorResponse(errMsg, 500);
     }
 
     // Store raw result
-    await insertExtractionResult(env, {
-      document_id: docId,
-      raw_json: JSON.stringify(parsed),
-      model_used: env.GEMINI_MODEL || 'gemini-2.0-flash',
-      processing_time_ms: processingTimeMs,
-    });
+    await env.DB.prepare(
+      "INSERT INTO extraction_results (document_id, raw_json, model_used, processing_time_ms) VALUES (?, ?, ?, ?)"
+    ).bind(docId, JSON.stringify(parsed), env.GEMINI_MODEL || 'gemini-2.5-flash', processingTimeMs).run();
 
     // Extract and store individual fields
     const fields = parsed.fields || parsed;
     const fieldEntries: Record<string, { value: string; confidence: number }> = {};
 
-    // Handle both nested {field: {value, confidence}} and flat {field: value} formats
     for (const [key, val] of Object.entries(fields)) {
       if (key === 'document_type' || key === 'confidence') continue;
       if (val && typeof val === 'object' && 'value' in (val as any)) {
@@ -78,12 +102,22 @@ export async function extractDocument(request: Request, env: Env, docId: string)
       }
     }
 
-    await insertExtractedFields(env, docId, fieldEntries);
+    // Batch insert fields
+    if (Object.keys(fieldEntries).length > 0) {
+      const stmt = env.DB.prepare(
+        "INSERT INTO extracted_fields (id, document_id, field_name, field_value, confidence) VALUES (?, ?, ?, ?, ?)"
+      );
+      const batch = Object.entries(fieldEntries).map(([name, data]) =>
+        stmt.bind(crypto.randomUUID(), docId, name, data.value, data.confidence)
+      );
+      await env.DB.batch(batch);
+    }
 
-    // Update doc status and type
-    await updateDocumentStatus(env, docId, 'extracted', {
-      document_type: parsed.document_type || docType,
-    });
+    // Update doc status
+    const updateTime = new Date().toISOString();
+    await env.DB.prepare(
+      "UPDATE documents SET status = 'extracted', document_type = ?, updated_at = ? WHERE id = ?"
+    ).bind(parsed.document_type || docType, updateTime, docId).run();
 
     // Return processed result
     const extractedFields = await getExtractedFields(env, docId);
@@ -100,13 +134,17 @@ export async function extractDocument(request: Request, env: Env, docId: string)
           value: f.field_value,
           confidence: f.confidence,
         })),
-        raw: parsed,
       },
     });
   } catch (err: any) {
     if (err instanceof AuthError) return errorResponse(err.message, 401);
+    console.error('[Extract Error]', err.message, err.stack);
     // Update status to error
-    try { await updateDocumentStatus(env, docId, 'error', { error_message: err.message }); } catch {}
-    throw err;
+    try {
+      await env.DB.prepare(
+        "UPDATE documents SET status = 'error', error_message = ?, updated_at = ? WHERE id = ?"
+      ).bind(err.message, new Date().toISOString(), docId).run();
+    } catch {}
+    return errorResponse(`Extraction failed: ${err.message}`, 500);
   }
 }

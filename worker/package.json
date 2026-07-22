@@ -9,8 +9,11 @@
     "db:migrate": "wrangler d1 execute docufill-db --file=src/db/schema.ts"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241201.0",
+    "@cloudflare/workers-types": "^4.20260702.1",
     "typescript": "^5.7.0",
     "wrangler": "^3.100.0"
+  },
+  "dependencies": {
+    "jose": "^6.2.4"
   }
 }

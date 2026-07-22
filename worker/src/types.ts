@@ -5,6 +5,9 @@ export interface Env {
   ENVIRONMENT: string;
   MAX_FILE_SIZE_MB: string;
   GEMINI_MODEL: string;
+  // Clerk Auth
+  CLERK_JWT_ISSUER: string;       // e.g. "https://your-app.clerk.accounts.dev"
+  CLERK_JWT_PUBLIC_KEY: string;   // Optional: PEM public key (skips JWKS fetch)
 }
 
 export interface Document {

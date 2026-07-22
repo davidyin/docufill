@@ -6,7 +6,7 @@ import { requireAuth } from '../middleware/auth';
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
 const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.pdf'];
 
-// POST /documents/upload — Upload a document for processing
+// POST /documents — Upload a document for processing
 export async function uploadDocument(request: Request, env: Env): Promise<Response> {
   try {
     const auth = await requireAuth(request, env);
@@ -23,7 +23,7 @@ export async function uploadDocument(request: Request, env: Env): Promise<Respon
     }
 
     // Validate file size
-    const maxSize = (parseInt(env.MAX_IMAGE_SIZE_MB as string) || 10) * 1024 * 1024;
+    const maxSize = (parseInt(env.MAX_FILE_SIZE_MB as string) || 10) * 1024 * 1024;
     if (file.size > maxSize) {
       return errorResponse(`File too large. Maximum: ${maxSize / 1024 / 1024}MB`, 400);
     }
@@ -39,15 +39,12 @@ export async function uploadDocument(request: Request, env: Env): Promise<Respon
       httpMetadata: { contentType: file.type },
     });
 
-    // Store metadata in D1
-    await insertDocument(env, {
-      id: docId,
-      filename: file.name,
-      r2Key,
-      mime_type: file.type,
-      file_size: file.size,
-      user_id: auth.uid,
-    });
+    // Store metadata in D1 (with timestamp)
+    const now = new Date().toISOString();
+    await env.DB.prepare(
+      `INSERT INTO documents (id, user_id, filename, r2_key, mime_type, file_size, status, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, 'uploaded', ?, ?)`
+    ).bind(docId, auth.uid, file.name, r2Key, file.type, file.size, now, now).run();
 
     return jsonResponse({
       success: true,
@@ -55,12 +52,13 @@ export async function uploadDocument(request: Request, env: Env): Promise<Respon
         id: docId,
         filename: file.name,
         status: 'uploaded',
-        message: 'Document uploaded successfully. Use POST /documents/:id/extract to process.',
+        message: 'Document uploaded. POST to /documents/:id/extract to process.',
       },
     }, 201);
   } catch (err: any) {
     if (err.name === 'AuthError') return errorResponse(err.message, 401);
-    throw err;
+    console.error('[Upload Error]', err.message, err.stack);
+    return errorResponse(`Upload failed: ${err.message}`, 500);
   }
 }
 
@@ -72,7 +70,8 @@ export async function listUserDocuments(request: Request, env: Env): Promise<Res
     return jsonResponse({ success: true, data: docs });
   } catch (err: any) {
     if (err.name === 'AuthError') return errorResponse(err.message, 401);
-    throw err;
+    console.error('[List Error]', err.message);
+    return errorResponse(`Failed to list documents: ${err.message}`, 500);
   }
 }
 
@@ -92,7 +91,8 @@ export async function getDocumentById(request: Request, env: Env, docId: string)
     return jsonResponse({ success: true, data: { ...doc, extracted_fields: fields } });
   } catch (err: any) {
     if (err.name === 'AuthError') return errorResponse(err.message, 401);
-    throw err;
+    console.error('[Get Error]', err.message);
+    return errorResponse(`Failed to get document: ${err.message}`, 500);
   }
 }
 

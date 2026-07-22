@@ -51,7 +51,7 @@ export async function insertExtractedField(
   await env.DB.prepare(
     `INSERT INTO extracted_fields (id, document_id, field_name, field_value, confidence)
      VALUES (?, ?, ?, ?, ?)`
-  ).bind(field.id, field.document_id, field.name, field.field_value, field.confidence).run();
+  ).bind(field.id, field.document_id, field.field_name, field.field_value, field.confidence).run();
 }
 
 export async function insertExtractedFields(

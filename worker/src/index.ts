@@ -86,14 +86,16 @@ async function route(request: Request, env: Env): Promise<Response> {
     return listUserDocuments(request, env);
   }
 
+  // Extraction endpoint: POST /documents/:id/extract
+  const extractMatch = path.match(/^\/documents\/([a-zA-Z0-9_-]+)\/extract$/);
+  if (extractMatch && method === 'POST') {
+    return extractDocument(request, env, extractMatch[1]);
+  }
+
+  // Get document: GET /documents/:id
   const docMatch = path.match(/^\/documents\/([a-zA-Z0-9_-]+)$/);
   if (docMatch && method === 'GET') {
     return getDocumentById(request, env, docMatch[1]);
-  }
-
-  // ─── Extraction ───
-  if (docMatch && method === 'POST' && path.endsWith('/extract')) {
-    return extractDocument(request, env, docMatch[1]);
   }
 
   // ─── Form Templates ───
