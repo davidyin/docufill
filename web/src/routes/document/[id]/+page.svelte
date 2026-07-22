@@ -91,7 +91,7 @@
           const items = JSON.parse(f.value);
           if (Array.isArray(items)) {
             items.forEach((item: any, i: number) => {
-              content += `  ${i + 1}. ${item.description || ''} x${item.quantity || 1} @ ${item.unit_price || 0} = ${item.total || 0}\n`;
+              content += `  ${i + 1}. ${item.description || ''} x${item.quantity || 1} @ ${item.unit_price || 0} = ${item.total_price || item.total || 0}\n`;
             });
           }
         } catch {
@@ -119,7 +119,7 @@
     return fieldName === 'line_items' || fieldName === 'line_item';
   }
 
-  function parseLineItems(value: string): Array<{ description: string; quantity: number; unit_price: number; total: number }> {
+  function parseLineItems(value: string): Array<{ description: string; quantity: number; unit_price: number; total_price?: number; total?: number }> {
     try {
       const parsed = JSON.parse(value);
       if (Array.isArray(parsed)) return parsed;
@@ -252,7 +252,7 @@
                               <span class="text-xs text-text-tertiary shrink-0">×{item.quantity}</span>
                             {/if}
                           </div>
-                          <span class="text-sm text-text-primary font-medium shrink-0 num">{formatPrice(item.total)}</span>
+                          <span class="text-sm text-text-primary font-medium shrink-0 num">{formatPrice(item.total_price ?? item.total)}</span>
                         </li>
                       {/each}
                     </ul>
