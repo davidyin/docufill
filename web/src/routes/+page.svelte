@@ -404,7 +404,7 @@
           <span class="text-text-tertiary text-sm">Loading documents...</span>
         </div>
       {:else if recentDocs.length === 0}
-        <!-- Debug: recentDocs = {recentDocs.length}, loading = {loading} -->
+        <p class="text-xs text-text-tertiary mb-3">DEBUG: recentDocs={recentDocs.length}, loading={loading}</p>
         <Card variant="default" padding="lg">
           <div class="flex flex-col items-center py-8 text-center">
             <div class="w-16 h-16 rounded-full bg-bg-elevated flex items-center justify-center mb-4">
@@ -418,6 +418,7 @@
           </div>
         </Card>
       {:else}
+        <p class="text-xs text-text-tertiary mb-3">DEBUG: recentDocs={recentDocs.length}, filteredDocs={filteredDocs.length}, search=&quot;{searchQuery}&quot;, type={filterType}, date={filterDate}</p>
         <div class="grid gap-3">
           {#each filteredDocs as doc (doc.id)}
             <a
