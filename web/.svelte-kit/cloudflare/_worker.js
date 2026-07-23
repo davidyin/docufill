@@ -967,7 +967,7 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     index = 0;
     component = async () => component_cache ??= (await Promise.resolve().then(() => (init_layout_svelte(), layout_svelte_exports))).default;
-    imports = ["_app/immutable/nodes/0.YuW8xiik.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/BhM9xyOz.js", "_app/immutable/chunks/2Fqz7AJf.js", "_app/immutable/chunks/DLmr-IY7.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js"];
+    imports = ["_app/immutable/nodes/0.DhWDx9bq.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/FHuIUbBm.js", "_app/immutable/chunks/DJ-ti81V.js", "_app/immutable/chunks/Bihn7ILr.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js"];
     stylesheets = ["_app/immutable/assets/0.CYtcsWEn.css"];
     fonts = [];
   }
@@ -1006,7 +1006,7 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     index2 = 1;
     component2 = async () => component_cache2 ??= (await Promise.resolve().then(() => (init_error_svelte(), error_svelte_exports))).default;
-    imports2 = ["_app/immutable/nodes/1.DcOVuO27.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/BhM9xyOz.js", "_app/immutable/chunks/2Fqz7AJf.js", "_app/immutable/chunks/DLmr-IY7.js", "_app/immutable/chunks/Fn3-GOhv.js"];
+    imports2 = ["_app/immutable/nodes/1.DaFh3eZX.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/FHuIUbBm.js", "_app/immutable/chunks/DJ-ti81V.js", "_app/immutable/chunks/Bihn7ILr.js", "_app/immutable/chunks/Fn3-GOhv.js"];
     stylesheets2 = [];
     fonts2 = [];
   }
@@ -1207,7 +1207,7 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     index3 = 2;
     component3 = async () => component_cache3 ??= (await Promise.resolve().then(() => (init_page_svelte(), page_svelte_exports))).default;
-    imports3 = ["_app/immutable/nodes/2.CxLdD7-R.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/HXLfLq7R.js"];
+    imports3 = ["_app/immutable/nodes/2.DfT0pc1P.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/HXLfLq7R.js"];
     stylesheets3 = [];
     fonts3 = [];
   }
@@ -1253,7 +1253,7 @@ var init__4 = __esm({
   ".svelte-kit/output/server/nodes/3.js"() {
     index4 = 3;
     component4 = async () => component_cache4 ??= (await Promise.resolve().then(() => (init_page_svelte2(), page_svelte_exports2))).default;
-    imports4 = ["_app/immutable/nodes/3.BPQeYVUH.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/BhM9xyOz.js", "_app/immutable/chunks/2Fqz7AJf.js", "_app/immutable/chunks/DLmr-IY7.js", "_app/immutable/chunks/HXLfLq7R.js", "_app/immutable/chunks/CNecGmaE.js"];
+    imports4 = ["_app/immutable/nodes/3.B0loTGDQ.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/FHuIUbBm.js", "_app/immutable/chunks/DJ-ti81V.js", "_app/immutable/chunks/Bihn7ILr.js", "_app/immutable/chunks/HXLfLq7R.js", "_app/immutable/chunks/CNecGmaE.js"];
     stylesheets4 = [];
     fonts4 = [];
   }
@@ -1293,7 +1293,7 @@ var init__5 = __esm({
   ".svelte-kit/output/server/nodes/4.js"() {
     index5 = 4;
     component5 = async () => component_cache5 ??= (await Promise.resolve().then(() => (init_page_svelte3(), page_svelte_exports3))).default;
-    imports5 = ["_app/immutable/nodes/4.BXhGg4rK.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/DLmr-IY7.js", "_app/immutable/chunks/Fn3-GOhv.js"];
+    imports5 = ["_app/immutable/nodes/4.CJ7K1uZn.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/Bihn7ILr.js", "_app/immutable/chunks/Fn3-GOhv.js"];
     stylesheets5 = [];
     fonts5 = [];
   }
@@ -1439,7 +1439,7 @@ var init__7 = __esm({
   ".svelte-kit/output/server/nodes/6.js"() {
     index7 = 6;
     component7 = async () => component_cache7 ??= (await Promise.resolve().then(() => (init_page_svelte5(), page_svelte_exports5))).default;
-    imports7 = ["_app/immutable/nodes/6.dO25akpa.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/2Fqz7AJf.js", "_app/immutable/chunks/DLmr-IY7.js", "_app/immutable/chunks/HXLfLq7R.js", "_app/immutable/chunks/CNecGmaE.js"];
+    imports7 = ["_app/immutable/nodes/6.bmz1fYl_.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js", "_app/immutable/chunks/D4mvj3-5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/chunks/DJ-ti81V.js", "_app/immutable/chunks/Bihn7ILr.js", "_app/immutable/chunks/HXLfLq7R.js", "_app/immutable/chunks/CNecGmaE.js"];
     stylesheets7 = [];
     fonts7 = [];
   }
@@ -3530,7 +3530,7 @@ var options = {
     app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="/favicon.png" />\n  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />\n  <meta name="theme-color" content="#0A0A0C" />\n  <meta name="apple-mobile-web-app-capable" content="yes" />\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />\n  <title>DocuFill \u2014 AI Document Extraction</title>\n  <style>\n    html, body { background: #0A0A0C; margin: 0; padding: 0; overscroll-behavior: none; }\n  </style>\n  ' + head + '\n</head>\n<body data-sveltekit-preload-data="hover" class="bg-bg-primary">\n  <div style="display: contents">' + body + "</div>\n</body>\n</html>\n",
     error: error2
   },
-  version_hash: "upas2"
+  version_hash: "8nueab"
 };
 async function get_hooks() {
   let handle;
@@ -7515,7 +7515,7 @@ var manifest = (() => {
     assets: /* @__PURE__ */ new Set([]),
     mimeTypes: {},
     _: {
-      client: { start: "_app/immutable/entry/start.CLuQ-5lk.js", app: "_app/immutable/entry/app.DPoWL4rC.js", imports: ["_app/immutable/entry/start.CLuQ-5lk.js", "_app/immutable/chunks/2Fqz7AJf.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/DLmr-IY7.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/entry/app.DPoWL4rC.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
+      client: { start: "_app/immutable/entry/start.DSDaiHj7.js", app: "_app/immutable/entry/app.CkuMcHA5.js", imports: ["_app/immutable/entry/start.DSDaiHj7.js", "_app/immutable/chunks/DJ-ti81V.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/Bihn7ILr.js", "_app/immutable/chunks/Fn3-GOhv.js", "_app/immutable/entry/app.CkuMcHA5.js", "_app/immutable/chunks/C1FmrZbK.js", "_app/immutable/chunks/oaNiL9Sp.js", "_app/immutable/chunks/C_L2AAhk.js"], stylesheets: [], fonts: [], uses_env_dynamic_public: false },
       nodes: [
         __memo(() => Promise.resolve().then(() => (init__(), __exports))),
         __memo(() => Promise.resolve().then(() => (init__2(), __exports2))),

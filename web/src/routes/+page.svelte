@@ -404,6 +404,7 @@
           <span class="text-text-tertiary text-sm">Loading documents...</span>
         </div>
       {:else if recentDocs.length === 0}
+        <!-- Debug: recentDocs = {recentDocs.length}, loading = {loading} -->
         <Card variant="default" padding="lg">
           <div class="flex flex-col items-center py-8 text-center">
             <div class="w-16 h-16 rounded-full bg-bg-elevated flex items-center justify-center mb-4">
