@@ -24,49 +24,31 @@
   let filterDate: 'all' | 'month' | '3months' | 'year' = 'all';
   let docDetailsCache: Record<string, any> = {};
 
-  $: filteredDocs = getFilteredDocs();
-
-  function getFilteredDocs(): Document[] {
-    let docs = recentDocs;
-
+  $: filteredDocs = recentDocs.filter(d => {
     // Filter by document type
     if (filterType) {
-      docs = docs.filter(d => d.document_type === filterType || (!d.document_type && filterType === 'unknown'));
+      if (!(d.document_type === filterType || (!d.document_type && filterType === 'unknown'))) return false;
     }
-
     // Filter by date range
     if (filterDate !== 'all') {
       const now = new Date();
       const cutoff = new Date();
-      if (filterDate === 'month') {
-        cutoff.setMonth(now.getMonth() - 1);
-      } else if (filterDate === '3months') {
-        cutoff.setMonth(now.getMonth() - 3);
-      } else if (filterDate === 'year') {
-        cutoff.setFullYear(now.getFullYear() - 1);
-      }
-      docs = docs.filter(d => new Date(d.created_at) >= cutoff);
+      if (filterDate === 'month') cutoff.setMonth(now.getMonth() - 1);
+      else if (filterDate === '3months') cutoff.setMonth(now.getMonth() - 3);
+      else if (filterDate === 'year') cutoff.setFullYear(now.getFullYear() - 1);
+      if (new Date(d.created_at) < cutoff) return false;
     }
-
     // Search by vendor name or filename
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
-      docs = docs.filter(d => {
-        if (d.filename.toLowerCase().includes(q)) return true;
-        if (d.document_type?.toLowerCase().includes(q)) return true;
-        // Search in extracted fields (vendor_name, total_amount)
-        const details = docDetailsCache[d.id];
-        if (details?.extracted_fields) {
-          return details.extracted_fields.some((f: any) =>
-            f.field_value?.toLowerCase().includes(q)
-          );
-        }
-        return false;
-      });
+      if (d.filename.toLowerCase().includes(q)) return true;
+      if (d.document_type?.toLowerCase().includes(q)) return true;
+      const details = docDetailsCache[d.id];
+      if (details?.extracted_fields?.some((f: any) => f.field_value?.toLowerCase().includes(q))) return true;
+      return false;
     }
-
-    return docs;
-  }
+    return true;
+  });
 
   async function loadStats() {
     const extracted = recentDocs.filter(d => d.status === 'extracted');
@@ -404,7 +386,6 @@
           <span class="text-text-tertiary text-sm">Loading documents...</span>
         </div>
       {:else if recentDocs.length === 0}
-        <p class="text-xs text-text-tertiary mb-3">DEBUG: recentDocs={recentDocs.length}, loading={loading}</p>
         <Card variant="default" padding="lg">
           <div class="flex flex-col items-center py-8 text-center">
             <div class="w-16 h-16 rounded-full bg-bg-elevated flex items-center justify-center mb-4">
@@ -418,7 +399,6 @@
           </div>
         </Card>
       {:else}
-        <p class="text-xs text-text-tertiary mb-3">DEBUG: recentDocs={recentDocs.length}, filteredDocs={filteredDocs.length}, search=&quot;{searchQuery}&quot;, type={filterType}, date={filterDate}</p>
         <div class="grid gap-3">
           {#each filteredDocs as doc (doc.id)}
             <a
