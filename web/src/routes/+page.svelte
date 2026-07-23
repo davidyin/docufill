@@ -18,6 +18,56 @@
   let avgConfidence = 0;
   let docTypeCounts: Record<string, number> = {};
 
+  // ─── Search & Filter State ───
+  let searchQuery = '';
+  let filterType: string | null = null;
+  let filterDate: 'all' | 'month' | '3months' | 'year' = 'all';
+  let docDetailsCache: Record<string, any> = {};
+
+  $: filteredDocs = getFilteredDocs();
+
+  function getFilteredDocs(): Document[] {
+    let docs = recentDocs;
+
+    // Filter by document type
+    if (filterType) {
+      docs = docs.filter(d => d.document_type === filterType || (!d.document_type && filterType === 'unknown'));
+    }
+
+    // Filter by date range
+    if (filterDate !== 'all') {
+      const now = new Date();
+      const cutoff = new Date();
+      if (filterDate === 'month') {
+        cutoff.setMonth(now.getMonth() - 1);
+      } else if (filterDate === '3months') {
+        cutoff.setMonth(now.getMonth() - 3);
+      } else if (filterDate === 'year') {
+        cutoff.setFullYear(now.getFullYear() - 1);
+      }
+      docs = docs.filter(d => new Date(d.created_at) >= cutoff);
+    }
+
+    // Search by vendor name or filename
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      docs = docs.filter(d => {
+        if (d.filename.toLowerCase().includes(q)) return true;
+        if (d.document_type?.toLowerCase().includes(q)) return true;
+        // Search in extracted fields (vendor_name, total_amount)
+        const details = docDetailsCache[d.id];
+        if (details?.extracted_fields) {
+          return details.extracted_fields.some((f: any) =>
+            f.field_value?.toLowerCase().includes(q)
+          );
+        }
+        return false;
+      });
+    }
+
+    return docs;
+  }
+
   async function loadStats() {
     const extracted = recentDocs.filter(d => d.status === 'extracted');
     if (extracted.length === 0) {
@@ -65,6 +115,12 @@
     monthSpending = monthTotal;
     avgConfidence = confCount > 0 ? confSum / confCount : 0;
     docTypeCounts = typeCounts;
+
+    // Cache document details for search
+    details.forEach(doc => {
+      if (doc) docDetailsCache[doc.id] = doc;
+    });
+
     statsLoaded = true;
   }
 
@@ -268,10 +324,79 @@
             </button>
           {/if}
           {#if recentDocs.length > 0}
-            <span class="text-xs text-text-tertiary">{recentDocs.length} total</span>
+            <span class="text-xs text-text-tertiary">
+              {filteredDocs.length === recentDocs.length ? `${recentDocs.length} total` : `${filteredDocs.length} of ${recentDocs.length}`}
+            </span>
           {/if}
         </div>
       </div>
+
+      {#if recentDocs.length > 0}
+        <!-- Search & Filter Bar -->
+        <div class="space-y-3 mb-4">
+          <!-- Search Input -->
+          <div class="relative">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-tertiary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+            </svg>
+            <input
+              type="text"
+              bind:value={searchQuery}
+              placeholder="Search by vendor, amount, type..."
+              class="w-full pl-10 pr-4 py-2.5 bg-bg-elevated border border-white/[0.08] rounded-xl text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:border-docufill-orange/40 transition-colors"
+            />
+            {#if searchQuery}
+              <button
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-text-tertiary hover:text-text-secondary touchable"
+                on:click={() => searchQuery = ''}
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            {/if}
+          </div>
+
+          <!-- Filter Row -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <!-- Type Filters -->
+            <button
+              class="px-2.5 py-1 rounded-full text-xs font-medium border transition-all touchable {filterType === null ? 'bg-docufill-orange/10 border-docufill-orange/30 text-docufill-orange' : 'border-white/[0.08] text-text-secondary hover:border-white/[0.15]'}"
+              on:click={() => filterType = null}
+            >
+              All
+            </button>
+            {#each Object.entries(docTypeCounts) as [type, count]}
+              <button
+                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border transition-all touchable {filterType === type ? 'bg-docufill-orange/10 border-docufill-orange/30 text-docufill-orange' : 'border-white/[0.08] text-text-secondary hover:border-white/[0.15]'}"
+                on:click={() => filterType = filterType === type ? null : type}
+              >
+                {getTypeEmoji(type)} {type} <span class="opacity-60">×{count}</span>
+              </button>
+            {/each}
+
+            <div class="flex-1"></div>
+
+            <!-- Date Filter -->
+            <select
+              bind:value={filterDate}
+              class="px-2.5 py-1 rounded-lg text-xs font-medium border border-white/[0.08] bg-bg-elevated text-text-secondary focus:outline-none focus:border-docufill-orange/30 cursor-pointer"
+            >
+              <option value="all">All time</option>
+              <option value="month">Last month</option>
+              <option value="3months">Last 3 months</option>
+              <option value="year">Last year</option>
+            </select>
+          </div>
+
+          <!-- Results count -->
+          {#if filteredDocs.length !== recentDocs.length}
+            <p class="text-xs text-text-tertiary">
+              Showing {filteredDocs.length} of {recentDocs.length} documents
+            </p>
+          {/if>
+        </div>
+      {/if}
 
       {#if loading}
         <div class="flex flex-col items-center justify-center py-16 gap-4">
@@ -293,7 +418,7 @@
         </Card>
       {:else}
         <div class="grid gap-3">
-          {#each recentDocs as doc (doc.id)}
+          {#each filteredDocs as doc (doc.id)}
             <a
               href="/document/{doc.id}"
               class="block animate-fade-in"
