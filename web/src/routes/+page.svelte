@@ -168,7 +168,7 @@
       );
 
       const csv = csvRows.join('\n');
-      const bom = '﻿';
+      const bom = '\uFEFF';
       const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -186,7 +186,7 @@
     try {
       recentDocs = await docufillApi.listDocuments();
       documents.set(recentDocs);
-      loadStats();
+      await loadStats();
     } catch (err) {
       console.error('Failed to load documents:', err);
     }
@@ -394,7 +394,7 @@
             <p class="text-xs text-text-tertiary">
               Showing {filteredDocs.length} of {recentDocs.length} documents
             </p>
-          {/if>
+          {/if}
         </div>
       {/if}
 
